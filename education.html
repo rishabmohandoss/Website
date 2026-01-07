@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rishab Mohandoss</title>
+  <title>Education - Rishab Mohandoss</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
@@ -13,7 +13,8 @@
       padding: 0;
       height: 100%;
       font-family: 'Michroma', sans-serif;
-      background-color: #030306; /* Matches Vanta bg to prevent white flash */
+      background-color: #030306;
+      color: white;
     }
 
     /* Navbar Styles */
@@ -58,28 +59,104 @@
       background-color: rgba(59, 60, 194, 0.1);
     }
 
+    /* Page Layout */
     #vanta-bg {
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
+      padding-top: 100px; /* Space for navbar */
+      padding-bottom: 50px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 90%;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       letter-spacing: 4px;
-      margin-bottom: 10px;
+      margin-bottom: 40px;
       text-transform: uppercase;
+      text-align: center;
+      color: #3b3cc2;
+      border-bottom: 2px solid #3b3cc2;
+      padding-bottom: 10px;
+    }
+
+    /* Degree Section Styling */
+    .degree-card {
+      margin-bottom: 40px;
+      border-left: 4px solid #3b3cc2;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .degree-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .degree-title {
+      font-size: 1.5rem;
+      color: white;
+      margin: 0;
+    }
+
+    .university {
+      font-size: 1.1rem;
+      color: #aaa;
+      margin-top: 5px;
+    }
+
+    .year {
+      font-size: 0.9rem;
+      background: rgba(59, 60, 194, 0.3);
+      padding: 5px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .concentration {
+      font-size: 1rem;
+      color: #3b3cc2;
+      font-weight: bold;
+      margin-bottom: 15px;
+      display: block;
     }
 
     p {
-      font-size: 1.1rem;
-      letter-spacing: 1px;
       line-height: 1.6;
+      font-size: 0.95rem;
       opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    /* List styling */
+    .details-list {
+      list-style-type: disc;
+      margin-left: 20px;
+      margin-top: 10px;
+      color: #ccc;
+    }
+    .details-list li {
+      margin-bottom: 5px;
+    }
+
+    .gpa {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #fff;
     }
   </style>
 </head>
@@ -87,19 +164,79 @@
 <body>
   <nav>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Me</a></li>
-      <li><a href="education.html">Education</a></li>
-      <li><a href="projects.html">Projects</a></li>
+      <li><a href="education.html" class="active">Education</a></li> <li><a href="projects.html">Projects</a></li>
       <li><a href="experience.html">Experience</a></li>
     </ul>
   </nav>
 
   <div id="vanta-bg">
-    <div>
-      <h1>Rishab Mohandoss</h1>
-      <p>Tech MBA, Concentration in Artificial Intelligence</p>
-      <p>Bachelor of Sciences in Financial Technology</p>
+    <div class="container">
+      <h1>Education</h1>
+
+      <div class="degree-card">
+        <div class="degree-header">
+          <div>
+            <h2 class="degree-title">Tech MBA</h2>
+            <div class="university">[University Name]</div>
+          </div>
+          <span class="year">Expected Graduation: [Year]</span>
+        </div>
+        
+        <span class="concentration">Concentration in Artificial Intelligence</span>
+        
+        <p>
+          [Describe your MBA program here. What attracted you to this program? What are you learning? How does it combine technology and business?]
+        </p>
+
+        <ul class="details-list">
+          <li>Key courses or specializations</li>
+          <li>Notable projects or research</li>
+          <li>Leadership roles or achievements</li>
+          <li>Relevant skills developed</li>
+        </ul>
+        <span class="gpa">GPA: X.XX</span>
+      </div>
+
+      <div class="degree-card">
+        <div class="degree-header">
+          <div>
+            <h2 class="degree-title">Bachelor of Science</h2>
+            <div class="university">[University Name]</div>
+          </div>
+          <span class="year">[Start Year] - [End Year]</span>
+        </div>
+        
+        <span class="concentration">Financial Technology</span>
+        
+        <p>
+          [Describe your undergraduate program. What key concepts did you learn? How this foundation prepared you for your career?]
+        </p>
+
+        <ul class="details-list">
+          <li>Major coursework and projects</li>
+          <li>Research or thesis work</li>
+          <li>Academic achievements or honors</li>
+          <li>Extracurricular activities</li>
+        </ul>
+        <span class="gpa">GPA: X.XX</span>
+      </div>
+
+      <div class="degree-card" style="border-left-color: #7b7ce0;">
+        <div class="degree-header">
+          <h2 class="degree-title">Certifications & Additional Learning</h2>
+          <span class="year">Ongoing</span>
+        </div>
+        <p>Continuous professional development through certifications and workshops:</p>
+        <ul class="details-list">
+          <li>Professional certifications (AWS, Google Cloud, etc.)</li>
+          <li>Specialized courses or bootcamps</li>
+          <li>Industry training programs</li>
+          <li>Self-directed learning initiatives</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 
