@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rishab Mohandoss</title>
+  <title>Projects - Rishab Mohandoss</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
@@ -13,7 +13,8 @@
       padding: 0;
       height: 100%;
       font-family: 'Michroma', sans-serif;
-      background-color: #030306; /* Matches Vanta bg to prevent white flash */
+      background-color: #030306;
+      color: white;
     }
 
     /* Navbar Styles */
@@ -58,48 +59,285 @@
       background-color: rgba(59, 60, 194, 0.1);
     }
 
+    /* Layout */
     #vanta-bg {
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
+      padding-top: 100px;
+      padding-bottom: 50px;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       letter-spacing: 4px;
-      margin-bottom: 10px;
+      margin-bottom: 40px;
       text-transform: uppercase;
+      text-align: center;
+      color: #3b3cc2;
+      border-bottom: 2px solid #3b3cc2;
+      padding-bottom: 10px;
     }
 
-    p {
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      line-height: 1.6;
-      opacity: 0.9;
+    /* Projects Grid System */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+      gap: 2rem;
+      width: 90%;
+      max-width: 1200px;
     }
+
+    /* Project Card Styling */
+    .project-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(59, 60, 194, 0.3);
+      border-radius: 15px;
+      padding: 2rem;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #3b3cc2;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      color: white;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .project-date {
+      font-size: 0.8rem;
+      color: #aaa;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: #ddd;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      flex-grow: 1; /* Pushes content down to align buttons */
+    }
+
+    .achievements-list {
+      list-style-type: disc;
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    .achievements-list li {
+      margin-bottom: 5px;
+    }
+
+    /* Tech Stack Tags */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tech-tag {
+      font-size: 0.75rem;
+      background: rgba(59, 60, 194, 0.2);
+      border: 1px solid #3b3cc2;
+      padding: 3px 10px;
+      border-radius: 15px;
+      color: #fff;
+    }
+
+    /* Links / Buttons */
+    .project-links {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-link {
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background-color: #3b3cc2;
+      color: white;
+      border: 1px solid #3b3cc2;
+    }
+
+    .btn-primary:hover {
+      background-color: #2a2a96;
+      border-color: #2a2a96;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #3b3cc2;
+      border: 1px solid #3b3cc2;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(59, 60, 194, 0.1);
+      color: white;
+    }
+
   </style>
 </head>
 
 <body>
   <nav>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Me</a></li>
       <li><a href="education.html">Education</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li> <li><a href="experience.html">Experience</a></li>
     </ul>
   </nav>
 
   <div id="vanta-bg">
-    <div>
-      <h1>Rishab Mohandoss</h1>
-      <p>Tech MBA, Concentration in Artificial Intelligence</p>
-      <p>Bachelor of Sciences in Financial Technology</p>
+    <h1>Featured Projects</h1>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <h2 class="project-title">[Project Title]</h2>
+          <span class="project-date">[Month Year]</span>
+        </div>
+        
+        <p class="project-desc">
+          [Provide a clear, concise description of the project. What problem does it solve? What was your role? What makes this project interesting or impactful?]
+        </p>
+
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">TensorFlow</span>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Node.js</span>
+        </div>
+
+        <ul class="achievements-list">
+          <li>Key achievement or feature</li>
+          <li>Technical challenge overcome</li>
+          <li>Impact or results</li>
+        </ul>
+
+        <div class="project-links">
+          <a href="[Link to GitHub]" class="btn-primary" target="_blank">GitHub</a>
+          <a href="[Link to Demo]" class="btn-outline" target="_blank">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h2 class="project-title">AI/ML Project</h2>
+          <span class="project-date">[Month Year]</span>
+        </div>
+        
+        <p class="project-desc">
+          [Describe an AI or machine learning project. What model or algorithm did you use? What data did you work with? What insights or predictions did you generate?]
+        </p>
+
+        <div class="tech-stack">
+          <span class="tech-tag">PyTorch</span>
+          <span class="tech-tag">scikit-learn</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">Flask</span>
+        </div>
+
+        <ul class="achievements-list">
+          <li>Model accuracy or performance metrics</li>
+          <li>Data processing techniques used</li>
+          <li>Real-world application</li>
+        </ul>
+
+        <div class="project-links">
+          <a href="[Link to GitHub]" class="btn-primary" target="_blank">GitHub</a>
+          <a href="[Link to Report]" class="btn-outline" target="_blank">Read Report</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h2 class="project-title">FinTech Application</h2>
+          <span class="project-date">[Month Year]</span>
+        </div>
+        
+        <p class="project-desc">
+          [Detail a financial technology project. How does it leverage technology to solve financial challenges? What features does it include?]
+        </p>
+
+        <div class="tech-stack">
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">MongoDB</span>
+          <span class="tech-tag">Express</span>
+          <span class="tech-tag">Chart.js</span>
+        </div>
+
+        <ul class="achievements-list">
+          <li>Financial analysis or automation feature</li>
+          <li>Security measures implemented</li>
+          <li>User experience improvements</li>
+        </ul>
+
+        <div class="project-links">
+          <a href="[Link to GitHub]" class="btn-primary" target="_blank">GitHub</a>
+          <a href="[Link to Case Study]" class="btn-outline" target="_blank">Case Study</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h2 class="project-title">Another Project</h2>
+          <span class="project-date">[Month Year]</span>
+        </div>
+        
+        <p class="project-desc">
+          [Add as many projects as you'd like. Each card follows the same structure, making it easy to showcase your diverse portfolio of work.]
+        </p>
+
+        <div class="tech-stack">
+          <span class="tech-tag">Your</span>
+          <span class="tech-tag">Tech</span>
+          <span class="tech-tag">Stack</span>
+        </div>
+
+        <ul class="achievements-list">
+          <li>Highlight important aspects</li>
+          <li>Focus on impact and results</li>
+          <li>Include quantifiable achievements when possible</li>
+        </ul>
+
+        <div class="project-links">
+          <a href="#" class="btn-primary">View Project</a>
+        </div>
+      </div>
+
     </div>
   </div>
 
