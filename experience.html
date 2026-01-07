@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rishab Mohandoss</title>
+  <title>Experience - Rishab Mohandoss</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
@@ -13,7 +13,8 @@
       padding: 0;
       height: 100%;
       font-family: 'Michroma', sans-serif;
-      background-color: #030306; /* Matches Vanta bg to prevent white flash */
+      background-color: #030306;
+      color: white;
     }
 
     /* Navbar Styles */
@@ -58,28 +59,144 @@
       background-color: rgba(59, 60, 194, 0.1);
     }
 
+    /* Layout */
     #vanta-bg {
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
+      padding-top: 100px;
+      padding-bottom: 50px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 90%;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       letter-spacing: 4px;
-      margin-bottom: 10px;
+      margin-bottom: 40px;
       text-transform: uppercase;
+      text-align: center;
+      color: #3b3cc2;
+      border-bottom: 2px solid #3b3cc2;
+      padding-bottom: 10px;
     }
 
-    p {
+    /* Job Card Styling */
+    .job-card {
+      margin-bottom: 40px;
+      border-left: 4px solid #3b3cc2;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .job-title {
+      font-size: 1.4rem;
+      color: white;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .company-name {
       font-size: 1.1rem;
-      letter-spacing: 1px;
+      color: #3b3cc2;
+      margin-top: 5px;
+      display: block;
+    }
+
+    .date-location {
+      text-align: right;
+    }
+
+    .date {
+      display: block;
+      font-size: 0.9rem;
+      color: #ccc;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 5px;
+    }
+
+    .location {
+      display: block;
+      font-size: 0.85rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    .job-description {
+      margin-top: 15px;
       line-height: 1.6;
-      opacity: 0.9;
+      color: #ddd;
+      font-size: 0.95rem;
+    }
+
+    .responsibilities {
+      margin-top: 10px;
+      padding-left: 20px;
+      color: #ccc;
+    }
+
+    .responsibilities li {
+      margin-bottom: 8px;
+    }
+
+    /* Tech Stack Tags */
+    .tech-stack {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tech-tag {
+      background-color: rgba(59, 60, 194, 0.2);
+      border: 1px solid #3b3cc2;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Notable Achievement Box */
+    .notable-achievement {
+      margin-top: 15px;
+      background: rgba(59, 60, 194, 0.1);
+      border-left: 3px solid #fff;
+      padding: 10px 15px;
+      font-style: italic;
+      color: #eee;
+    }
+    .notable-label {
+      font-weight: bold;
+      color: #3b3cc2;
+      margin-right: 5px;
+      font-style: normal;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .job-header { flex-direction: column; }
+      .date-location { text-align: left; margin-top: 10px; }
     }
   </style>
 </head>
@@ -87,19 +204,132 @@
 <body>
   <nav>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Me</a></li>
       <li><a href="education.html">Education</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="experience.html">Experience</a></li>
-    </ul>
+      <li><a href="experience.html" class="active">Experience</a></li> </ul>
   </nav>
 
   <div id="vanta-bg">
-    <div>
-      <h1>Rishab Mohandoss</h1>
-      <p>Tech MBA, Concentration in Artificial Intelligence</p>
-      <p>Bachelor of Sciences in Financial Technology</p>
+    <div class="container">
+      <h1>Professional Experience</h1>
+
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-title">[Job Title]</div>
+            <span class="company-name">[Company Name]</span>
+          </div>
+          <div class="date-location">
+            <span class="date">[Month Year] - Present</span>
+            <span class="location">[City, State/Country]</span>
+          </div>
+        </div>
+
+        <p class="job-description">
+          [Provide a brief overview of your role and the company. What is the company's mission? What was your primary focus in this position?]
+        </p>
+
+        <ul class="responsibilities">
+          <li>Key responsibility or achievement with specific metrics or outcomes</li>
+          <li>Major project you led or contributed to and its impact</li>
+          <li>Technologies, methodologies, or processes you implemented</li>
+          <li>Team collaboration or leadership experience</li>
+          <li>Problem-solving examples and solutions delivered</li>
+        </ul>
+
+        <div class="notable-achievement">
+          <span class="notable-label">Notable Achievement:</span>
+          Highlight a significant accomplishment, award, or recognition received during this role.
+        </div>
+
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Machine Learning</span>
+          <span class="tech-tag">SQL</span>
+          <span class="tech-tag">AWS</span>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <div class="job-title">[Previous Job Title]</div>
+            <span class="company-name">[Previous Company Name]</span>
+          </div>
+          <div class="date-location">
+            <span class="date">[Month Year] - [Month Year]</span>
+            <span class="location">[City, State/Country]</span>
+          </div>
+        </div>
+
+        <p class="job-description">
+          [Describe your previous role. What were you responsible for? How did this experience contribute to your professional growth?]
+        </p>
+
+        <ul class="responsibilities">
+          <li>Major responsibility with quantifiable results</li>
+          <li>Cross-functional collaboration or stakeholder management</li>
+          <li>Process improvements or efficiency gains achieved</li>
+          <li>Technical challenges overcome</li>
+        </ul>
+
+        <div class="tech-stack">
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">MongoDB</span>
+        </div>
+      </div>
+
+      <div class="job-card" style="border-left-color: #7b7ce0;">
+        <div class="job-header">
+          <div>
+            <div class="job-title">[Internship/Entry Title]</div>
+            <span class="company-name">[Company Name]</span>
+          </div>
+          <div class="date-location">
+            <span class="date">[Month Year] - [Month Year]</span>
+            <span class="location">[City, State/Country]</span>
+          </div>
+        </div>
+
+        <p class="job-description">
+          [Detail your internship or early career experience. What did you learn? How did it shape your career trajectory?]
+        </p>
+
+        <ul class="responsibilities">
+          <li>Learning experiences and skills developed</li>
+          <li>Contributions to team or company goals</li>
+          <li>Projects completed or initiatives supported</li>
+        </ul>
+
+        <div class="tech-stack">
+          <span class="tech-tag">Data Analysis</span>
+          <span class="tech-tag">Excel</span>
+          <span class="tech-tag">Tableau</span>
+        </div>
+      </div>
+
+      <div class="job-card" style="border-left-color: #aaa;">
+        <div class="job-header">
+          <div>
+            <div class="job-title">Volunteer & Leadership</div>
+            <span class="company-name">[Organization Name]</span>
+          </div>
+          <div class="date-location">
+            <span class="date">[Month Year] - [Month Year]</span>
+            <span class="location">[Location]</span>
+          </div>
+        </div>
+        <ul class="responsibilities">
+          <li>Key contributions or initiatives led</li>
+          <li>Skills applied or developed</li>
+          <li>Impact on the organization or community</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 
