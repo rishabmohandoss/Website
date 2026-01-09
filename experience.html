@@ -1,635 +1,291 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Experience - Rishab Mohandoss</title>
-
-
-
   <style>
-
     @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
-
-
-
     html, body {
-
       margin: 0;
-
       padding: 0;
-
       height: 100%;
-
       font-family: 'Michroma', sans-serif;
-
       background-color: #030306;
-
       color: white;
-
     }
-
-
-
     /* Navbar Styles */
-
     nav {
-
       position: fixed;
-
       top: 0;
-
       width: 100%;
-
       background-color: rgba(3, 3, 6, 0.95);
-
       backdrop-filter: blur(10px);
-
       padding: 1rem 2rem;
-
       z-index: 1000;
-
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-
     }
-
-
-
     nav ul {
-
       list-style: none;
-
       margin: 0;
-
       padding: 0;
-
       display: flex;
-
       justify-content: center;
-
       gap: 2rem;
-
     }
-
-
-
     nav ul li {
-
       display: inline;
-
     }
-
-
-
     nav ul li a {
-
       color: white;
-
       text-decoration: none;
-
       font-size: 0.9rem;
-
       letter-spacing: 2px;
-
       text-transform: uppercase;
-
       transition: color 0.3s ease;
-
       padding: 0.5rem 1rem;
-
       border-radius: 4px;
-
     }
-
-
-
     nav ul li a:hover,
-
     nav ul li a.active {
-
       color: #3b3cc2;
-
       background-color: rgba(59, 60, 194, 0.1);
-
     }
-
-
-
     /* Layout */
-
     #vanta-bg {
-
       width: 100%;
-
       min-height: 100vh;
-
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
-
       padding-top: 100px;
-
       padding-bottom: 50px;
-
     }
-
-
-
     .container {
-
       max-width: 900px;
-
       width: 90%;
-
       padding: 2rem;
-
       background: rgba(0, 0, 0, 0.6);
-
       border-radius: 15px;
-
       backdrop-filter: blur(5px);
-
     }
-
-
-
     h1 {
-
       font-size: 2.5rem;
-
       letter-spacing: 4px;
-
       margin-bottom: 40px;
-
       text-transform: uppercase;
-
       text-align: center;
-
       color: #3b3cc2;
-
       border-bottom: 2px solid #3b3cc2;
-
       padding-bottom: 10px;
-
     }
-
-
-
-    /* Job Card Styling */
-
-    .job-card {
-
-      margin-bottom: 40px;
-
-      border-left: 4px solid #3b3cc2;
-
-      padding-left: 25px;
-
-      position: relative;
-
-    }
-
-
-
-    .job-header {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: flex-start;
-
-      flex-wrap: wrap;
-
-      margin-bottom: 10px;
-
-    }
-
-
-
-    .job-title {
-
-      font-size: 1.4rem;
-
-      color: white;
-
-      margin: 0;
-
-      font-weight: bold;
-
-    }
-
-
-
-    .company-name {
-
-      font-size: 1.1rem;
-
-      color: #3b3cc2;
-
-      margin-top: 5px;
-
-      display: block;
-
-    }
-
-
-
-    .date-location {
-
-      text-align: right;
-
-    }
-
-
-
-    .date {
-
-      display: block;
-
-      font-size: 0.9rem;
-
-      color: #ccc;
-
-      background: rgba(255, 255, 255, 0.1);
-
-      padding: 3px 8px;
-
-      border-radius: 4px;
-
-      margin-bottom: 5px;
-
-    }
-
-
-
-    .location {
-
-      display: block;
-
-      font-size: 0.85rem;
-
-      color: #888;
-
-      font-style: italic;
-
-    }
-
-
-
-    .job-description {
-
-      margin-top: 15px;
-
-      line-height: 1.6;
-
-      color: #ddd;
-
-      font-size: 0.95rem;
-
-    }
-
-
-
-    .responsibilities {
-
-      margin-top: 10px;
-
-      padding-left: 20px;
-
-      color: #ccc;
-
-    }
-
-
-
-    .responsibilities li {
-
-      margin-bottom: 8px;
-
-    }
-
-
-
-    /* Tech Stack Tags */
-
-    .tech-stack {
-
-      margin-top: 15px;
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 10px;
-
-    }
-
-
-
-    .tech-tag {
-
-      background-color: rgba(59, 60, 194, 0.2);
-
-      border: 1px solid #3b3cc2;
-
-      color: white;
-
-      padding: 4px 10px;
-
-      border-radius: 20px;
-
-      font-size: 0.75rem;
-
+    h2 {
+      font-size: 1.6rem;
+      letter-spacing: 3px;
+      margin: 60px 0 30px 0;
       text-transform: uppercase;
-
-      letter-spacing: 1px;
-
-    }
-
-
-
-    /* Notable Achievement Box */
-
-    .notable-achievement {
-
-      margin-top: 15px;
-
-      background: rgba(59, 60, 194, 0.1);
-
-      border-left: 3px solid #fff;
-
-      padding: 10px 15px;
-
-      font-style: italic;
-
-      color: #eee;
-
-    }
-
-    .notable-label {
-
-      font-weight: bold;
-
       color: #3b3cc2;
-
+      border-bottom: 1px solid rgba(59, 60, 194, 0.4);
+      padding-bottom: 8px;
+      width: fit-content;
+      font-weight: normal;
+    }
+    /* Job Card Styling */
+    .job-card {
+      margin-bottom: 40px;
+      border-left: 4px solid #3b3cc2;
+      padding-left: 25px;
+      position: relative;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .job-title {
+      font-size: 1.4rem;
+      color: white;
+      margin: 0;
+      font-weight: bold;
+    }
+    .company-name {
+      font-size: 1.1rem;
+      color: #3b3cc2;
+      margin-top: 5px;
+      display: block;
+    }
+    .date-location {
+      text-align: right;
+    }
+    .date {
+      display: block;
+      font-size: 0.9rem;
+      color: #ccc;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 5px;
+    }
+    .location {
+      display: block;
+      font-size: 0.85rem;
+      color: #888;
+      font-style: italic;
+    }
+    .job-description {
+      margin-top: 15px;
+      line-height: 1.6;
+      color: #ddd;
+      font-size: 0.95rem;
+    }
+    .responsibilities {
+      margin-top: 10px;
+      padding-left: 20px;
+      color: #ccc;
+    }
+    .responsibilities li {
+      margin-bottom: 8px;
+    }
+    /* Tech Stack Tags */
+    .tech-stack {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tech-tag {
+      background-color: rgba(59, 60, 194, 0.2);
+      border: 1px solid #3b3cc2;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    /* Notable Achievement Box */
+    .notable-achievement {
+      margin-top: 15px;
+      background: rgba(59, 60, 194, 0.1);
+      border-left: 3px solid #fff;
+      padding: 10px 15px;
+      font-style: italic;
+      color: #eee;
+    }
+    .notable-label {
+      font-weight: bold;
+      color: #3b3cc2;
       margin-right: 5px;
-
       font-style: normal;
-
     }
-
-
-
     /* Responsive adjustments */
-
     @media (max-width: 600px) {
-
       .job-header { flex-direction: column; }
-
       .date-location { text-align: left; margin-top: 10px; }
-
     }
-
   </style>
-
 </head>
-
-
-
 <body>
-
   <nav>
-
     <ul>
-
       <li><a href="index.html">Home</a></li>
-
       <li><a href="about.html">About Me</a></li>
-
       <li><a href="education.html">Education</a></li>
-
       <li><a href="projects.html">Projects</a></li>
-
-      <li><a href="experience.html" class="active">Experience</a></li> </ul>
-
+      <li><a href="experience.html" class="active">Experience</a></li>
+    </ul>
   </nav>
-
-
-
   <div id="vanta-bg">
-
     <div class="container">
-
       <h1>Professional Experience</h1>
-
-
-
       <div class="job-card">
-
         <div class="job-header">
-
           <div>
-
             <div class="job-title">Infrastructure & Software Associate Intern</div>
-
             <span class="company-name">Riverway Technologies</span>
-
           </div>
-
           <div class="date-location">
-
             <span class="date">05/2025 - 08/2025</span>
-
             <span class="location">Holmdel, NJ</span>
-
           </div>
-
         </div>
-
-
-
         <p class="job-description">
-
           As an Associate Intern at Riverway Technologies, an international startup focused on the nexus of AI, Finance, and Business Operations, I led the technical development of scalable software solutions designed to modernize legacy infrastructures. My primary focus was translating complex business requirements into AI-driven automation and client-facing applications that significantly enhanced operational efficiency for over 20 global businesses.
-
         </p>
-
-
-
         <ul class="responsibilities">
-
           <li>Designed and deployed AI-driven automation solutions that reduced manual operational tasks by 60%, directly improving business efficiency and scalability</li>
-
           <li>Led the end-to-end lifecycle of a client-facing application supporting 20+ active businesses, from requirements gathering through development and launch</li>
-
           <li>Partnered with stakeholders and 7 engineers to translate business requirements into scalable technical solutions</li>
-
           <li>Supported system modernization initiatives aligned with cloud-based architectures and client operational goals</li>
-
         </ul>
-
-
-
         <div class="notable-achievement">
-
           <span class="notable-label">Notable Achievement:</span>
-
           Highlight a significant accomplishment, award, or recognition received during this role.
-
         </div>
-
-
-
         <div class="tech-stack">
-
           <span class="tech-tag">Python</span>
-
           <span class="tech-tag">Machine Learning</span>
-
           <span class="tech-tag">SQL</span>
-
           <span class="tech-tag">AWS</span>
-
         </div>
-
       </div>
-
-
-
       <div class="job-card">
-
         <div class="job-header">
-
           <div>
-
             <div class="job-title">Technology Consultant Intern</div>
-
             <span class="company-name">CGI</span>
-
           </div>
-
           <div class="date-location">
-
             <span class="date">02/2025 - 05/2025</span>
-
             <span class="location">Newark, NJ</span>
-
           </div>
-
         </div>
-
-
-
         <p class="job-description">
-
           As a Technology Consultant at CGI, I collaborated with senior consultants to identify and solve complex operational inefficiencies through tailored technical strategies. My core focus was the development of an AI-powered scheduling engine that modernized legacy systems, significantly reducing server load while optimizing overall system performance for the client.
-
         </p>
-
-
-
         <ul class="responsibilities">
-
           <li>Collaborated with CGI consultants to analyze campus operational challenges and design technology-enabled solutions</li>
-
           <li>Developed an AI-powered scheduling solution to modernize legacy systems, reducing server load by 40% and improving efficiency by 60%</li>
-
           <li>Documented functional requirements and supported solution validation with client stakeholders</li>
-
         </ul>
-
-
-
         <div class="notable-achievement">
-
           <span class="notable-label">Notable Achievement:</span>
-
           Highlight a significant accomplishment, award, or recognition received during this role.
-
         </div>
-
-
-
         <div class="tech-stack">
-
           <span class="tech-tag">JavaScript</span>
-
           <span class="tech-tag">React</span>
-
           <span class="tech-tag">Node.js</span>
-
           <span class="tech-tag">MongoDB</span>
-
         </div>
-
       </div>
-
-
-
       <div class="job-card" style="border-left-color: #7b7ce0;">
-
         <div class="job-header">
-
           <div>
-
             <div class="job-title">Teaching Assistant</div>
-
             <span class="company-name">NJIT Learning Community</span>
-
           </div>
-
           <div class="date-location">
-
             <span class="date">09/2025 - Present</span>
-
             <span class="location">Newark, NJ</span>
-
           </div>
-
         </div>
-
-
-
         <p class="job-description">
-
           As a Teaching Assistant for the NJIT Learning Community, I facilitate academic workshops and provide dedicated support to a cohort of over 50 students to enhance engagement and technical learning outcomes. My role also involves a significant leadership component, where I coordinate large-scale community initiatives by managing collaboration between multiple volunteer organizations and diverse groups of participants.
-
         </p>
-
-
-
         <ul class="responsibilities">
-
           <li>Facilitated workshops and provided academic support to 50+ students, improving engagement and learning outcomes</li>
-
           <li>Coordinated cross-organization community initiatives involving 3 volunteer groups and 50+ participants</li>
-
         </ul>
-
-
-
         <div class="tech-stack">
-
           <span class="tech-tag">Data Analysis</span>
-
           <span class="tech-tag">Excel</span>
-
           <span class="tech-tag">Tableau</span>
-
         </div>
-
       </div>
-
-<h1>Leadership & Volunteer</h1>
-
+      <h2>Leadership & Volunteer</h2>
       <div class="job-card" style="border-left-color: #aaa;">
         <div class="job-header">
           <div>
@@ -645,7 +301,6 @@
           <li>Led community programming and communications for 500+ residents, balancing student advocacy with operational execution and policy enforcement.</li>
         </ul>
       </div>
-
       <div class="job-card" style="border-left-color: #aaa;">
         <div class="job-header">
           <div>
@@ -661,7 +316,6 @@
           <li>Scaled consulting group membership by 40% through targeted recruitment strategy while optimizing financial oversight to reduce discretionary spending by 12%.</li>
         </ul>
       </div>
-
       <div class="job-card" style="border-left-color: #aaa;">
         <div class="job-header">
           <div>
@@ -677,7 +331,6 @@
           <li>Managed programming initiatives for a community of 300+ students, coordinating logistics and partnerships with 5 external organizations.</li>
         </ul>
       </div>
-
       <div class="job-card" style="border-left-color: #aaa;">
         <div class="job-header">
           <div>
@@ -686,57 +339,30 @@
           </div>
           <div class="date-location">
             <span class="date">Jan. 2023 - Jun. 2023</span>
-            <span class="location">Remote / International</span>
+            <span class="location">Marlboro, NJ</span>
           </div>
         </div>
         <ul class="responsibilities">
           <li>Directed a team of 15 volunteers and authored comprehensive business documentation for a $15,000 community-based infrastructure project.</li>
         </ul>
       </div>
-        </ul>
-
-      </div>
-
-
-
     </div>
-
   </div>
-
-
-
   <script src="three.r134.min.js"></script>
-
   <script src="vanta.net.min.js"></script>
-
   <script>
-
     VANTA.NET({
-
       el: "#vanta-bg",
-
       mouseControls: true,
-
       touchControls: true,
-
       gyroControls: false,
-
       minHeight: 200,
-
       minWidth: 200,
-
       scale: 1,
-
       scaleMobile: 1,
-
       color: 0x3b3cc2,
-
       backgroundColor: 0x030306
-
     });
-
   </script>
-
 </body>
-
 </html>
