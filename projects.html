@@ -8,17 +8,18 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
 
+    *, *::before, *::after { box-sizing: border-box; }
+
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       overflow-x: hidden;
       font-family: 'Michroma', sans-serif;
       background-color: #030306;
       color: white;
     }
 
-    /* Navbar Styles */
+    /* ── Navbar ── */
     nav {
       position: fixed;
       top: 0;
@@ -29,7 +30,6 @@
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
-
     nav ul {
       list-style: none;
       margin: 0;
@@ -38,11 +38,7 @@
       justify-content: center;
       gap: 2rem;
     }
-
-    nav ul li {
-      display: inline;
-    }
-
+    nav ul li { display: inline; }
     nav ul li a {
       color: white;
       text-decoration: none;
@@ -53,455 +49,528 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
     }
-
     nav ul li a:hover,
     nav ul li a.active {
       color: #3b3cc2;
       background-color: rgba(59, 60, 194, 0.1);
     }
 
-    /* Layout */
+    /* ── Page layout ── */
     #vanta-bg {
       width: 100%;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 100px;
-      padding-bottom: 50px;
+      padding-top: 110px;
+      padding-bottom: 80px;
+    }
+
+    .showcase-wrapper {
+      width: 90%;
+      max-width: 860px;
     }
 
     h1 {
       font-size: 2.5rem;
       letter-spacing: 4px;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
       text-transform: uppercase;
       text-align: center;
       color: #3b3cc2;
       border-bottom: 2px solid #3b3cc2;
-      padding-bottom: 10px;
+      padding-bottom: 12px;
     }
 
-    /* Projects Grid System */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr)); /* Responsive grid */
-      gap: 2rem;
-      width: 90%;
-      max-width: 1200px;
+    /* ── Floating image preview (desktop only) ── */
+    #project-preview {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 500;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    #project-preview.visible { opacity: 1; }
+
+    .preview-inner {
+      width: 300px;
+      height: 190px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.75), 0 0 0 1px rgba(59,60,194,0.35);
+      position: relative;
+      transform: scale(0.85);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #project-preview.visible .preview-inner { transform: scale(1); }
+
+    .preview-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.08);
+      filter: blur(8px);
+      transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+    }
+    .preview-img.active {
+      opacity: 1;
+      transform: scale(1);
+      filter: none;
+    }
+    .preview-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(3,3,6,0.4) 0%, transparent 60%);
+      pointer-events: none;
     }
 
-    /* Project Card Styling */
-    .project-card {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(59, 60, 194, 0.3);
-      border-radius: 15px;
-      padding: 2rem;
-      backdrop-filter: blur(5px);
-      transition: transform 0.3s ease, border-color 0.3s ease;
+    /* ── Project list ── */
+    .project-row {
+      position: relative;
+      border-top: 1px solid rgba(59, 60, 194, 0.2);
+      padding: 1.4rem 0.75rem;
+      cursor: default;
+      display: block;
+    }
+    .list-bottom-border { border-top: 1px solid rgba(59, 60, 194, 0.2); }
+
+    .row-highlight {
+      position: absolute;
+      inset: 0;
+      margin: 0 -0.5rem;
+      border-radius: 10px;
+      background: rgba(59, 60, 194, 0.07);
+      opacity: 0;
+      transform: scaleY(0.9);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+    }
+    .project-row.hovered .row-highlight {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+
+    .row-body {
+      position: relative;
       display: flex;
-      flex-direction: column;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: #3b3cc2;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .project-header {
-      display: flex;
+      align-items: flex-start;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
+      gap: 1.5rem;
     }
 
-    .project-title {
-      font-size: 1.3rem;
+    /* Left */
+    .row-left { flex: 1; min-width: 0; }
+
+    .row-title-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .row-title {
+      font-size: 1.2rem;
+      font-weight: bold;
       color: white;
       margin: 0;
-      font-weight: bold;
-    }
-
-    .project-date {
-      font-size: 0.8rem;
-      color: #aaa;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
-
-    .project-desc {
-      font-size: 0.95rem;
-      color: #ddd;
-      line-height: 1.6;
-      margin-bottom: 15px;
-      flex-grow: 1; /* Pushes content down to align buttons */
-    }
-
-    .achievements-list {
-      list-style-type: disc;
-      margin-left: 20px;
-      margin-bottom: 20px;
-      color: #ccc;
-      font-size: 0.9rem;
-    }
-    .achievements-list li {
-      margin-bottom: 5px;
-    }
-
-    /* Tech Stack Tags */
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .tech-tag {
-      font-size: 0.75rem;
-      background: rgba(59, 60, 194, 0.2);
-      border: 1px solid #3b3cc2;
-      padding: 3px 10px;
-      border-radius: 15px;
-      color: #fff;
-    }
-
-    /* Links / Buttons */
-    .project-links {
-      display: flex;
-      gap: 10px;
-      margin-top: auto;
-    }
-
-    .btn-link {
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
       letter-spacing: 1px;
-      font-weight: bold;
+    }
+    .title-underline {
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      height: 1px;
+      background: white;
+      width: 0;
+      transition: width 0.3s ease;
+    }
+    .project-row.hovered .title-underline { width: 100%; }
+
+    .row-arrow {
+      opacity: 0;
+      transform: translate(-6px, 6px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      color: rgba(255,255,255,0.6);
+      flex-shrink: 0;
+    }
+    .project-row.hovered .row-arrow {
+      opacity: 1;
+      transform: translate(0, 0);
     }
 
-    .btn-primary {
-      background-color: #3b3cc2;
+    .row-desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      margin: 0 0 10px 0;
+      transition: color 0.25s ease;
+    }
+    .project-row.hovered .row-desc { color: rgba(255,255,255,0.72); }
+
+    .row-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 0.68rem;
+      background: rgba(59, 60, 194, 0.18);
+      border: 1px solid rgba(59, 60, 194, 0.5);
+      padding: 2px 9px;
+      border-radius: 20px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Right */
+    .row-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .row-date {
+      font-size: 0.8rem;
+      font-family: monospace;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.25s ease;
+      white-space: nowrap;
+    }
+    .project-row.hovered .row-date { color: rgba(255,255,255,0.65); }
+
+    .row-links {
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .project-row.hovered .row-links {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .row-link {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+    .row-link.primary {
+      background: #3b3cc2;
       color: white;
       border: 1px solid #3b3cc2;
     }
-
-    .btn-primary:hover {
-      background-color: #2a2a96;
-      border-color: #2a2a96;
-    }
-
-    .btn-outline {
-      background-color: transparent;
+    .row-link.primary:hover { background: #2a2a96; }
+    .row-link.secondary {
+      background: transparent;
       color: #3b3cc2;
       border: 1px solid #3b3cc2;
     }
+    .row-link.secondary:hover { background: rgba(59,60,194,0.15); color: white; }
 
-    .btn-outline:hover {
-      background-color: rgba(59, 60, 194, 0.1);
-      color: white;
-    }
-
-
-    /* ── Mobile Responsiveness ── */
-    *, *::before, *::after { box-sizing: border-box; }
-
+    /* ── Mobile ── */
     @media (max-width: 768px) {
       nav { padding: 0.75rem 1rem; }
       nav ul { gap: 0.4rem; flex-wrap: wrap; }
-      nav ul li a {
-        font-size: 0.7rem;
-        letter-spacing: 0.5px;
-        padding: 0.35rem 0.5rem;
-      }
+      nav ul li a { font-size: 0.7rem; letter-spacing: 0.5px; padding: 0.35rem 0.5rem; }
+      #vanta-bg { padding-top: 90px; }
       h1 { font-size: 1.6rem; letter-spacing: 2px; }
-      .projects-grid {
-        grid-template-columns: 1fr;
-        width: 92%;
+      .showcase-wrapper { width: 94%; }
+      #project-preview { display: none; }
+      .row-body { flex-direction: column; gap: 0.75rem; }
+      .row-right {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
       }
-      .project-header { flex-direction: column; gap: 6px; }
-      .project-title { font-size: 1.1rem; }
-      .project-card { padding: 1.25rem; }
-      .project-links { flex-wrap: wrap; }
+      .row-links { opacity: 1; transform: none; }
+      .row-title { font-size: 1rem; }
+      .row-desc { font-size: 0.82rem; }
     }
   </style>
 </head>
-
 <body>
-  
+
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="education.html">Education</a></li>
       <li><a href="experience.html">Experience</a></li>
-      <li><a href="projects.html">Projects</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
     </ul>
   </nav>
+
+  <!-- Floating image preview -->
+  <div id="project-preview">
+    <div class="preview-inner">
+      <img class="preview-img" data-index="0" src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=380&fit=crop&auto=format" alt="">
+      <img class="preview-img" data-index="1" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&h=380&fit=crop&auto=format" alt="">
+      <img class="preview-img" data-index="2" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=380&fit=crop&auto=format" alt="">
+      <img class="preview-img" data-index="3" src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=600&h=380&fit=crop&auto=format" alt="">
+      <img class="preview-img" data-index="4" src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=600&h=380&fit=crop&auto=format" alt="">
+      <img class="preview-img" data-index="5" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=380&fit=crop&auto=format" alt="">
+      <img class="preview-img" data-index="6" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=380&fit=crop&auto=format" alt="">
+      <img class="preview-img" data-index="7" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=380&fit=crop&auto=format" alt="">
+      <img class="preview-img" data-index="8" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=380&fit=crop&auto=format" alt="">
+      <img class="preview-img" data-index="9" src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=380&fit=crop&auto=format" alt="">
+      <div class="preview-gradient"></div>
+    </div>
+  </div>
+
   <div id="vanta-bg">
-    <h1>Featured Projects</h1>
+    <div class="showcase-wrapper">
+      <h1>Featured Projects</h1>
+      <div class="project-list" id="project-list">
 
-    <div class="projects-grid">
-
-      <!-- NEW: Ometa * N — position 1 -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">Ometa * N</h2>
-          <span class="project-date">03/26</span>
+        <!-- 0: Ometa * N -->
+        <div class="project-row" data-index="0">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">Ometa * N<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">A dual-scan code auditing tool that evaluates AI-generated code for computational efficiency and cybersecurity vulnerabilities.</p>
+              <div class="row-tags">
+                <span class="tag">Python</span><span class="tag">Static Analysis</span><span class="tag">Cybersecurity</span><span class="tag">AI Auditing</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">03/26</span>
+              <div class="row-links">
+                <a href="https://github.com/rishabmohandoss/code-efficiency-checker" class="row-link primary" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/posts/rishab-mohandoss_i-was-incredibly-honored-to-have-the-opportunity-ugcPost-7446738176481816576-dOjJ" class="row-link secondary" target="_blank">Post</a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <p class="project-desc">
-          A dual-scan code auditing tool built to evaluate AI-generated code across two dimensions: computational efficiency and cybersecurity vulnerabilities. Designed to bring accountability to the growing use of LLM-generated code in production environments.
-        </p>
-
-        <div class="tech-stack">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Static Analysis</span>
-          <span class="tech-tag">Cybersecurity</span>
-          <span class="tech-tag">AI Code Auditing</span>
+        <!-- 1: Automated AI Messaging Agents -->
+        <div class="project-row" data-index="1">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">Automated AI Messaging Agents<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">Built and deployed AI agents to streamline communication workflows, reducing manual intervention by 60%.</p>
+              <div class="row-tags">
+                <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Node.js</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">05/25</span>
+              <div class="row-links">
+                <a href="https://github.com/rishabmohandoss/whatsapp-bot" class="row-link primary" target="_blank">GitHub</a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="project-links">
-          <a href="https://github.com/rishabmohandoss/code-efficiency-checker" class="btn-primary" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/posts/rishab-mohandoss_i-was-incredibly-honored-to-have-the-opportunity-ugcPost-7446738176481816576-dOjJ?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADKWFTwBqL3mJLCBVFmj-lRAY0G-oVThYEw" class="btn-outline" target="_blank">Post</a>
+        <!-- 2: SpyFall Web Game -->
+        <div class="project-row" data-index="2">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">SpyFall Web Game<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">An interactive, online multiplayer adaptation of the popular social deduction party game, SpyFall.</p>
+              <div class="row-tags">
+                <span class="tag">Web Dev</span><span class="tag">Game Dev</span><span class="tag">Multiplayer</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">02/26</span>
+              <div class="row-links">
+                <a href="https://github.com/rishabmohandoss/SpyFall" class="row-link primary" target="_blank">GitHub</a>
+                <a href="https://rishabmohandoss.github.io/SpyFall/" class="row-link secondary" target="_blank">Demo</a>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- 3: Ether -->
+        <div class="project-row" data-index="3">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">Ether<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">A private, emotionally expressive messaging platform where users communicate through mood descriptions, music, and dynamic cloud environments.</p>
+              <div class="row-tags">
+                <span class="tag">React</span><span class="tag">Firebase</span><span class="tag">Vanta.js</span><span class="tag">Framer Motion</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">01/26</span>
+              <div class="row-links">
+                <a href="https://github.com/rishabmohandoss/Moody" class="row-link primary" target="_blank">GitHub</a>
+                <a href="https://github.com/rishabmohandoss/Moody/blob/main/Video%20Project%202%20(1).mp4" class="row-link secondary" target="_blank">Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4: Empathy Engine -->
+        <div class="project-row" data-index="4">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">Empathy Engine<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">A hackathon-winning Chrome extension performing real-time behavioral analysis during video calls, detecting vocal inflections to predict emotional states.</p>
+              <div class="row-tags">
+                <span class="tag">Chrome Extension</span><span class="tag">NLP</span><span class="tag">Audio Analysis</span><span class="tag">Behavioral AI</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">04/26</span>
+              <div class="row-links">
+                <a href="https://www.linkedin.com/posts/rishab-mohandoss_thrilled-to-announce-that-my-fellow-google-ugcPost-7448830772284784642-s0xI" class="row-link secondary" target="_blank">Post</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5: Hunger Games Simulation -->
+        <div class="project-row" data-index="5">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">Hunger Games Simulation<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">A web-hosted simulation game using statistical modeling to practically demonstrate the classic newsvendor inventory problem.</p>
+              <div class="row-tags">
+                <span class="tag">Statistical Modeling</span><span class="tag">Data Simulation</span><span class="tag">Render</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">03/26</span>
+              <div class="row-links">
+                <a href="https://github.com/rishabmohandoss/Hunger-Games" class="row-link primary" target="_blank">GitHub</a>
+                <a href="https://hunger-games-2idn.onrender.com/" class="row-link secondary" target="_blank">Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6: Tetris Pomodoro Timer -->
+        <div class="project-row" data-index="6">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">Tetris Pomodoro Timer<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">A productivity app combining a Pomodoro time manager with an embedded Tetris game for rewarding break periods.</p>
+              <div class="row-tags">
+                <span class="tag">JavaScript</span><span class="tag">UI/UX</span><span class="tag">Productivity</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">02/26</span>
+              <div class="row-links">
+                <a href="https://github.com/rishabmohandoss/Tetris-Pomodoro-Timer" class="row-link primary" target="_blank">GitHub</a>
+                <a href="https://rishabmohandoss.github.io/Tetris-Pomodoro-Timer/" class="row-link secondary" target="_blank">Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7: Regression & Predictive Modeling -->
+        <div class="project-row" data-index="7">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">Regression &amp; Predictive Modeling<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">Analyzed large datasets using regression models to support data-driven decision-making with 98% predictive accuracy.</p>
+              <div class="row-tags">
+                <span class="tag">Python</span><span class="tag">Regression</span><span class="tag">Data Analysis</span><span class="tag">Excel</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">01/25</span>
+              <div class="row-links">
+                <a href="MGMT 216 Final Group Project (1).pdf" class="row-link secondary" target="_blank">Report</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8: FanFuel Business Plan -->
+        <div class="project-row" data-index="8">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">FanFuel Business Plan<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">A 100+ page consulting-style business plan covering market strategy, financial modeling, and operational execution.</p>
+              <div class="row-tags">
+                <span class="tag">Business Strategy</span><span class="tag">Financial Modeling</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">06/24</span>
+              <div class="row-links">
+                <a href="FanFuel Final Business Plan.pdf" class="row-link secondary" target="_blank">Read</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9: Finternet Report -->
+        <div class="project-row" data-index="9">
+          <div class="row-highlight"></div>
+          <div class="row-body">
+            <div class="row-left">
+              <div class="row-title-line">
+                <h3 class="row-title">Finternet Report<span class="title-underline"></span></h3>
+                <svg class="row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+              </div>
+              <p class="row-desc">White Paper, General Audience Paper, and video discussing the potential of the Finternet concept and decentralized financial infrastructure.</p>
+              <div class="row-tags">
+                <span class="tag">FinTech</span><span class="tag">Research</span><span class="tag">DeFi</span>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-date">10/24</span>
+              <div class="row-links">
+                <a href="Rishab Mohandoss White Paper.pdf" class="row-link primary" target="_blank">Paper</a>
+                <a href="https://youtu.be/dTplA0Lag4A" class="row-link secondary" target="_blank">Video</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="list-bottom-border"></div>
       </div>
-
-      <!-- EXISTING: Automated AI Messaging Agents — position 2 -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">Automated AI Messaging Agents</h2>
-          <span class="project-date">05/2025</span>
-        </div>
-        
-        <p class="project-desc">
-          Built and deployed AI agents to streamline communication workflows, reducing manual intervention by 60%.
-        </p>
-
-        <div class="tech-stack">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">TensorFlow</span>
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">Node.js</span>
-        </div>
-
-        <ul class="achievements-list">
-          <li>Key achievement or feature</li>
-          <li>Technical challenge overcome</li>
-          <li>Impact or results</li>
-        </ul>
-
-        <div class="project-links">
-          <a href="https://github.com/rishabmohandoss/whatsapp-bot" class="btn-primary" target="_blank">GitHub</a>
-          <a href="[Link to Demo]" class="btn-outline" target="_blank">Live Demo</a>
-        </div>
-      </div>
-
-      <!-- EXISTING: SpyFall Web Game — position 3 (before Ether) -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">SpyFall Web Game</h2>
-          <span class="project-date">02/2026</span>
-        </div>
-        
-        <p class="project-desc">
-          An interactive, online multiplayer web game adaptation of the popular social deduction party game, SpyFall.
-        </p>
-
-        <div class="tech-stack">
-          <span class="tech-tag">Web Development</span>
-          <span class="tech-tag">Game Dev</span>
-          <span class="tech-tag">Multiplayer</span>
-        </div>
-
-        <ul class="achievements-list">
-          <li>Developed a fully playable, browser-based social deduction game.</li>
-          <li>Hosted online for seamless access during group events and game nights.</li>
-        </ul>
-
-        <div class="project-links">
-          <a href="https://github.com/rishabmohandoss/SpyFall" class="btn-primary" target="_blank">GitHub</a>
-          <a href="https://rishabmohandoss.github.io/SpyFall/" class="btn-outline" target="_blank">Live Demo</a>
-        </div>
-      </div>
-
-      <!-- NEW: Ether — position 4 (after SpyFall) -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">Ether</h2>
-          <span class="project-date">01/26</span>
-        </div>
-
-        <p class="project-desc">
-          A private, emotionally expressive messaging platform designed for people who struggle to put feelings into words. Users can communicate through mood descriptions, music, and dynamic cloud pattern environments, creating a shared emotional space without requiring the right words.
-        </p>
-
-        <div class="tech-stack">
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">Firebase</span>
-          <span class="tech-tag">Vanta.js</span>
-          <span class="tech-tag">Framer Motion</span>
-        </div>
-
-        <div class="project-links">
-          <a href="https://github.com/rishabmohandoss/Moody" class="btn-primary" target="_blank">GitHub</a>
-          <a href="https://github.com/rishabmohandoss/Moody/blob/main/Video%20Project%202%20(1).mp4" class="btn-outline" target="_blank">Live Demo</a>
-        </div>
-      </div>
-
-      <!-- NEW: Empathy Engine — position 5 -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">Empathy Engine</h2>
-          <span class="project-date">04/26</span>
-        </div>
-
-        <p class="project-desc">
-          A hackathon-winning Chrome extension that performs real-time behavioral analysis during video calls. By detecting vocal inflections and live transcript anomalies, it predicts emotional states such as confusion, discomfort, and hesitation, helping users communicate more effectively or rehearse high-stakes conversations.
-        </p>
-
-        <div class="tech-stack">
-          <span class="tech-tag">Chrome Extension</span>
-          <span class="tech-tag">NLP</span>
-          <span class="tech-tag">Audio Analysis</span>
-          <span class="tech-tag">Behavioral AI</span>
-        </div>
-
-        <div class="project-links">
-          <a href="https://www.linkedin.com/posts/rishab-mohandoss_thrilled-to-announce-that-my-fellow-google-ugcPost-7448830772284784642-s0xI?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADKWFTwBqL3mJLCBVFmj-lRAY0G-oVThYEw" class="btn-outline" target="_blank">Post</a>
-        </div>
-      </div>
-
-      <!-- EXISTING: Hunger Games Simulation -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">Hunger Games Simulation (Newsvendor Model)</h2>
-          <span class="project-date">03/2026</span>
-        </div>
-        
-        <p class="project-desc">
-          A web-hosted simulation game utilizing statistical modeling to practically demonstrate the classic newsvendor inventory problem.
-        </p>
-
-        <div class="tech-stack">
-          <span class="tech-tag">Statistical Modeling</span>
-          <span class="tech-tag">Data Simulation</span>
-          <span class="tech-tag">Render Hosting</span>
-        </div>
-
-        <ul class="achievements-list">
-          <li>Applied advanced statistical modeling concepts to simulate complex game scenarios.</li>
-          <li>Translated the operations management newsvendor problem into an interactive format.</li>
-          <li>Deployed successfully as a live web application using Render.</li>
-        </ul>
-
-        <div class="project-links">
-          <a href="https://github.com/rishabmohandoss/Hunger-Games" class="btn-primary" target="_blank">GitHub</a>
-          <a href="https://hunger-games-2idn.onrender.com/" class="btn-outline" target="_blank">Live Demo</a>
-        </div>
-      </div>
-
-      <!-- EXISTING: Tetris Pomodoro Timer -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">Tetris Pomodoro Timer</h2>
-          <span class="project-date">02/2026</span>
-        </div>
-        
-        <p class="project-desc">
-          A productivity application combining a standard Pomodoro time manager with an embedded Tetris game for users to play during breaks.
-        </p>
-
-        <div class="tech-stack">
-          <span class="tech-tag">JavaScript</span>
-          <span class="tech-tag">UI/UX</span>
-          <span class="tech-tag">Productivity</span>
-        </div>
-
-        <ul class="achievements-list">
-          <li>Integrated a fully functional classic arcade game within a time management tool.</li>
-          <li>Designed an intuitive interface to boost focus periods while providing rewarding downtime.</li>
-        </ul>
-
-        <div class="project-links">
-          <a href="https://github.com/rishabmohandoss/Tetris-Pomodoro-Timer" class="btn-primary" target="_blank">GitHub</a>
-          <a href="https://rishabmohandoss.github.io/Tetris-Pomodoro-Timer/" class="btn-outline" target="_blank">Live Demo</a>
-        </div>
-      </div>
-
-      <!-- EXISTING: Regression Testing & Predictive Modeling -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">Regression Testing & Predictive Modeling</h2>
-          <span class="project-date">01/2025</span>
-        </div>
-        
-        <p class="project-desc">
-          Analyzed large datasets using regression models to support data-driven decision-making with 98% predictive accuracy.
-        </p>
-
-        <div class="tech-stack">
-          <span class="tech-tag">Regression</span>
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Excel</span>
-          <span class="tech-tag">Data Analysis</span>
-        </div>
-
-        <ul class="achievements-list">
-          <li>Model accuracy or performance metrics</li>
-          <li>Data processing techniques used</li>
-          <li>Real-world application</li>
-        </ul>
-
-        <div class="project-links">
-          <a href="MGMT 216 Final Group Project (1).pdf" class="btn-outline" target="_blank">Read Report</a>
-        </div>
-      </div>
-
-      <!-- EXISTING: FanFuel Business Plan -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">FanFuel Business Plan</h2>
-          <span class="project-date">06/2024</span>
-        </div>
-        
-        <p class="project-desc">
-          Authored a 100+ page consulting-style business plan covering market strategy, financial modeling, and operational execution.
-        </p>
-
-        <ul class="achievements-list">
-          <li>Financial analysis or automation feature</li>
-          <li>Security measures implemented</li>
-          <li>User experience improvements</li>
-        </ul>
-
-        <div class="project-links">
-          <a href="FanFuel Final Business Plan.pdf" class="btn-outline" target="_blank">Read Business Plan</a>
-        </div>
-      </div>
-
-      <!-- EXISTING: Finternet Report -->
-      <div class="project-card">
-        <div class="project-header">
-          <h2 class="project-title">Finternet Report</h2>
-          <span class="project-date">10/24</span>
-        </div>
-        
-        <p class="project-desc">
-          White Paper, General Audience Paper, and video discussing the potential of the "Finternet" concept. 
-        </p>
-
-        <div class="project-links">
-          <a href="Rishab Mohandoss General Audience Paper (1).pdf" class="btn-outline" target="_blank">Read General Audience Paper</a>
-          <a href="Rishab Mohandoss White Paper.pdf" class="btn-outline" target="_blank">Read White Paper</a>
-          <a href="https://youtu.be/dTplA0Lag4A" class="btn-outline" target="_blank">Watch Video</a>
-        </div>
-      </div>
-     
     </div>
   </div>
 
@@ -519,6 +588,42 @@
       scaleMobile: 1,
       color: 0x3b3cc2,
       backgroundColor: 0x030306
+    });
+
+    // Hover image preview with lerp smoothing (translated from React component)
+    var preview = document.getElementById("project-preview");
+    var previewImgs = preview.querySelectorAll(".preview-img");
+    var rows = document.querySelectorAll(".project-row");
+
+    var targetX = 0, targetY = 0, smoothX = 0, smoothY = 0;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    (function tick() {
+      smoothX = lerp(smoothX, targetX, 0.15);
+      smoothY = lerp(smoothY, targetY, 0.15);
+      preview.style.transform = "translate3d(" + (smoothX + 24) + "px," + (smoothY - 115) + "px,0)";
+      requestAnimationFrame(tick);
+    })();
+
+    document.addEventListener("mousemove", function(e) {
+      targetX = e.clientX;
+      targetY = e.clientY;
+    });
+
+    rows.forEach(function(row) {
+      var idx = parseInt(row.dataset.index, 10);
+      row.addEventListener("mouseenter", function() {
+        row.classList.add("hovered");
+        preview.classList.add("visible");
+        previewImgs.forEach(function(img, i) {
+          img.classList.toggle("active", i === idx);
+        });
+      });
+      row.addEventListener("mouseleave", function() {
+        row.classList.remove("hovered");
+        preview.classList.remove("visible");
+      });
     });
   </script>
 </body>
