@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      overflow-x: hidden;
       font-family: 'Michroma', sans-serif;
       background-color: #030306;
       color: white;
@@ -84,7 +85,7 @@
     /* Projects Grid System */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive grid */
+      grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr)); /* Responsive grid */
       gap: 2rem;
       width: 90%;
       max-width: 1200px;
@@ -206,6 +207,28 @@
       color: white;
     }
 
+
+    /* ── Mobile Responsiveness ── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0.75rem 1rem; }
+      nav ul { gap: 0.4rem; flex-wrap: wrap; }
+      nav ul li a {
+        font-size: 0.7rem;
+        letter-spacing: 0.5px;
+        padding: 0.35rem 0.5rem;
+      }
+      h1 { font-size: 1.6rem; letter-spacing: 2px; }
+      .projects-grid {
+        grid-template-columns: 1fr;
+        width: 92%;
+      }
+      .project-header { flex-direction: column; gap: 6px; }
+      .project-title { font-size: 1.1rem; }
+      .project-card { padding: 1.25rem; }
+      .project-links { flex-wrap: wrap; }
+    }
   </style>
 </head>
 

@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      overflow-x: hidden;
       font-family: 'Michroma', sans-serif;
       background-color: #030306;
       color: white;
@@ -175,6 +176,27 @@
       font-style: normal;
     }
 
+
+    /* ── Mobile Responsiveness ── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0.75rem 1rem; }
+      nav ul { gap: 0.4rem; flex-wrap: wrap; }
+      nav ul li a {
+        font-size: 0.7rem;
+        letter-spacing: 0.5px;
+        padding: 0.35rem 0.5rem;
+      }
+      #vanta-bg { padding-top: 90px; }
+      .container { padding: 1.25rem 1rem; width: 94%; }
+      h1 { font-size: 1.6rem; letter-spacing: 2px; }
+      .degree-header { flex-direction: column; gap: 8px; }
+      .degree-title { font-size: 1.2rem; }
+      .year { align-self: flex-start; }
+      .university { font-size: 0.95rem; }
+      p { font-size: 0.88rem; }
+    }
   </style>
 </head>
 

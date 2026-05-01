@@ -10,6 +10,7 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      overflow-x: hidden;
       font-family: 'Michroma', sans-serif;
       background-color: #030306;
       color: white;
@@ -184,6 +185,28 @@
     @media (max-width: 600px) {
       .job-header { flex-direction: column; }
       .date-location { text-align: left; margin-top: 10px; }
+    }
+
+    /* ── Mobile Responsiveness ── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0.75rem 1rem; }
+      nav ul { gap: 0.4rem; flex-wrap: wrap; }
+      nav ul li a {
+        font-size: 0.7rem;
+        letter-spacing: 0.5px;
+        padding: 0.35rem 0.5rem;
+      }
+      #vanta-bg { padding-top: 90px; }
+      .container { padding: 1.25rem 1rem; width: 94%; }
+      h1 { font-size: 1.6rem; letter-spacing: 2px; }
+      h2 { font-size: 1.2rem; letter-spacing: 1px; }
+      .job-header { flex-direction: column; }
+      .date-location { text-align: left; margin-top: 8px; }
+      .job-title { font-size: 1.1rem; }
+      .job-card { padding-left: 15px; }
+      .job-description, .responsibilities li { font-size: 0.88rem; }
     }
   </style>
 </head>
