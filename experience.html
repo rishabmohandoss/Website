@@ -6,7 +6,7 @@
   <title>Experience - Rishab Mohandoss</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -14,7 +14,7 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      font-family: 'Michroma', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: #030306;
       color: white;
     }
@@ -95,14 +95,14 @@
     }
     nav ul li { display: inline; }
     nav ul li a {
-      color: white;
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
       transition: color 0.3s ease, background-color 0.3s ease;
       padding: 0.5rem 1rem;
-      border-radius: 4px;
+      border-radius: 6px;
     }
     nav ul li a:hover, nav ul li a.active {
       color: #3b3cc2;
@@ -140,26 +140,26 @@
     }
 
     h1 {
-      font-size: 2.5rem;
-      letter-spacing: 4px;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
       margin-bottom: 40px;
-      text-transform: uppercase;
       text-align: center;
-      color: #3b3cc2;
-      border-bottom: 2px solid #3b3cc2;
-      padding-bottom: 10px;
+      color: white;
+      border-bottom: 1px solid rgba(59,60,194,0.3);
+      padding-bottom: 12px;
     }
 
     h2 {
-      font-size: 1.6rem;
-      letter-spacing: 3px;
-      margin: 60px 0 30px 0;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #3b3cc2;
-      border-bottom: 1px solid rgba(59,60,194,0.4);
+      margin: 52px 0 22px 0;
+      color: rgba(255,255,255,0.45);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
       padding-bottom: 8px;
       width: fit-content;
-      font-weight: normal;
     }
 
     .job-card {
@@ -177,8 +177,8 @@
       margin-bottom: 10px;
     }
 
-    .job-title { font-size: 1.4rem; color: white; margin: 0; font-weight: bold; }
-    .company-name { font-size: 1.1rem; color: #3b3cc2; margin-top: 5px; display: block; }
+    .job-title { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; color: white; margin: 0; }
+    .company-name { font-size: 0.875rem; font-weight: 500; color: #7b7ce0; margin-top: 3px; display: block; }
 
     .date-location { text-align: right; }
     .date {
@@ -188,9 +188,9 @@
     }
     .location { display: block; font-size: 0.85rem; color: #888; font-style: italic; }
 
-    .job-description { margin-top: 15px; line-height: 1.6; color: #ddd; font-size: 0.95rem; }
+    .job-description { margin-top: 14px; line-height: 1.75; color: rgba(255,255,255,0.65); font-size: 0.92rem; }
 
-    .responsibilities { margin-top: 10px; padding-left: 20px; color: #ccc; }
+    .responsibilities { margin-top: 10px; padding-left: 20px; color: rgba(255,255,255,0.58); font-size: 0.9rem; }
     .responsibilities li { margin-bottom: 8px; }
 
     .tech-stack { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px; }
@@ -222,8 +222,8 @@
       nav.scrolled .nav-inner { max-width: calc(100% - 2rem); border-radius: 14px; margin: 6px auto; }
       #vanta-bg { padding-top: 90px; }
       .container { padding: 1.25rem 1rem; width: 94%; }
-      h1 { font-size: 1.6rem; letter-spacing: 2px; }
-      h2 { font-size: 1.2rem; letter-spacing: 1px; }
+      h1 { font-size: 1.5rem; letter-spacing: -0.01em; }
+      h2 { font-size: 0.75rem; }
       .job-header { flex-direction: column; }
       .date-location { text-align: left; margin-top: 8px; }
       .job-title { font-size: 1.1rem; }
