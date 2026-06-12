@@ -3,419 +3,215 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Experience - Rishab Mohandoss</title>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
-      background-color: #030306;
-      color: white;
-    }
-
-    body {
-      background-image: url('https://ik.imagekit.io/lrigu76hy/tailark/night-background.jpg?updatedAt=1745733451120');
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-    }
-
-    /* ── Background orb layer ── */
-    .bg-layer {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .bg-orb { position: absolute; border-radius: 9999px; }
-    .bg-orb-1 {
-      width: 600px; height: 1000px;
-      top: -350px; left: -100px;
-      transform: rotate(-45deg);
-      background: radial-gradient(68% 68% at 55% 31%,
-        rgba(59,60,194,0.13) 0%, rgba(59,60,194,0.04) 50%, transparent 80%);
-    }
-    .bg-orb-2 {
-      width: 500px; height: 800px;
-      top: -200px; right: -80px;
-      transform: rotate(45deg);
-      background: radial-gradient(50% 50% at 50% 50%,
-        rgba(123,124,224,0.10) 0%, rgba(59,60,194,0.02) 70%, transparent 100%);
-    }
-
-    /* ── Navbar ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-    }
-    .nav-inner {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      background: rgba(3,3,6,0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 1px 0 rgba(59,60,194,0.18);
-      display: flex;
-      justify-content: center;
-      border: 1px solid transparent;
-      border-radius: 0;
-      transition:
-        max-width     0.45s cubic-bezier(0.4,0,0.2,1),
-        padding       0.45s cubic-bezier(0.4,0,0.2,1),
-        margin        0.45s cubic-bezier(0.4,0,0.2,1),
-        border-radius 0.45s cubic-bezier(0.4,0,0.2,1),
-        background    0.45s cubic-bezier(0.4,0,0.2,1),
-        box-shadow    0.45s cubic-bezier(0.4,0,0.2,1),
-        border-color  0.45s cubic-bezier(0.4,0,0.2,1);
-    }
-    nav.scrolled .nav-inner {
-      max-width: 820px;
-      padding: 0.55rem 1.75rem;
-      margin: 10px auto;
-      border-radius: 20px;
-      background: rgba(3,3,6,0.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-color: rgba(59,60,194,0.22);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-    }
-    nav ul {
-      list-style: none; margin: 0; padding: 0;
-      display: flex; justify-content: center; gap: 2rem;
-    }
-    nav ul li { display: inline; }
-    nav ul li a {
-      color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: color 0.3s ease, background-color 0.3s ease;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-    }
-    nav ul li a:hover, nav ul li a.active {
-      color: #3b3cc2;
-      background-color: rgba(59,60,194,0.1);
-    }
-
-    /* ── Page layout ── */
-    #vanta-bg {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 100px;
-      padding-bottom: 50px;
-    }
-
-    @keyframes pageIn {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .container {
-      max-width: 900px;
-      width: 90%;
-      padding: 2rem;
-      background: rgba(0,0,0,0.6);
-      border-radius: 15px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(59,60,194,0.2);
-      animation: pageIn 0.7s ease 0.1s both;
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 40px;
-      text-align: center;
-      color: white;
-      border-bottom: 1px solid rgba(59,60,194,0.3);
-      padding-bottom: 12px;
-    }
-
-    h2 {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin: 52px 0 22px 0;
-      color: rgba(255,255,255,0.45);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      padding-bottom: 8px;
-      width: fit-content;
-    }
-
-    .job-card {
-      margin-bottom: 40px;
-      border-left: 4px solid #3b3cc2;
-      padding-left: 25px;
-      position: relative;
-    }
-
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .job-title { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; color: white; margin: 0; }
-    .company-name { font-size: 0.875rem; font-weight: 500; color: #7b7ce0; margin-top: 3px; display: block; }
-
-    .date-location { text-align: right; }
-    .date {
-      display: block; font-size: 0.9rem; color: #ccc;
-      background: rgba(255,255,255,0.1);
-      padding: 3px 8px; border-radius: 4px; margin-bottom: 5px;
-    }
-    .location { display: block; font-size: 0.85rem; color: #888; font-style: italic; }
-
-    .job-description { margin-top: 14px; line-height: 1.75; color: rgba(255,255,255,0.65); font-size: 0.92rem; }
-
-    .responsibilities { margin-top: 10px; padding-left: 20px; color: rgba(255,255,255,0.58); font-size: 0.9rem; }
-    .responsibilities li { margin-bottom: 8px; }
-
-    .tech-stack { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px; }
-    .tech-tag {
-      background-color: rgba(59,60,194,0.2);
-      border: 1px solid #3b3cc2;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .notable-achievement {
-      margin-top: 15px;
-      background: rgba(59,60,194,0.1);
-      border-left: 3px solid #fff;
-      padding: 10px 15px;
-      font-style: italic;
-      color: #eee;
-    }
-    .notable-label { font-weight: bold; color: #3b3cc2; margin-right: 5px; font-style: normal; }
-
-    /* ── Mobile ── */
-    @media (max-width: 768px) {
-      nav ul { gap: 0.4rem; flex-wrap: wrap; }
-      nav ul li a { font-size: 0.7rem; letter-spacing: 0.5px; padding: 0.35rem 0.5rem; }
-      nav.scrolled .nav-inner { max-width: calc(100% - 2rem); border-radius: 14px; margin: 6px auto; }
-      #vanta-bg { padding-top: 90px; }
-      .container { padding: 1.25rem 1rem; width: 94%; }
-      h1 { font-size: 1.5rem; letter-spacing: -0.01em; }
-      h2 { font-size: 0.75rem; }
-      .job-header { flex-direction: column; }
-      .date-location { text-align: left; margin-top: 8px; }
-      .job-title { font-size: 1.1rem; }
-      .job-card { padding-left: 15px; }
-      .job-description, .responsibilities li { font-size: 0.88rem; }
-    }
-  </style>
+  <title>Experience — Rishab Mohandoss</title>
+  <meta name="description" content="Professional experience and campus leadership of Rishab Mohandoss: Riverway Technologies, CGI, NJIT Learning Community, Residence Life, TAMID.">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <div class="bg-layer" aria-hidden="true">
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-  </div>
+  <div class="progress-bar" id="progressBar"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
 
-  <nav id="navbar">
-    <div class="nav-inner">
-      <ul>
+  <header class="site-header" id="siteHeader">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="index.html">RM</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="education.html">Education</a></li>
-        <li><a href="experience.html" class="active">Experience</a></li>
+        <li><a href="experience.html" class="active" aria-current="page">Experience</a></li>
+        <li><a href="research.html">Research</a></li>
         <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <div id="vanta-bg">
-    <div class="container">
-      <h1>Professional Experience</h1>
+  <main>
+    <h1 class="page-title">Experience</h1>
+    <p class="page-intro">
+      I learn by shipping. Every role here ended with something deployed, measured, or led.
+    </p>
 
-      <div class="job-card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Infrastructure &amp; Software Associate Intern</div>
-            <span class="company-name">Riverway Technologies</span>
-          </div>
-          <div class="date-location">
-            <span class="date">05/2025 - 08/2025</span>
-            <span class="location">Holmdel, NJ</span>
-          </div>
-        </div>
-        <p class="job-description">
-          As an Associate Intern at Riverway Technologies, an international startup focused on the nexus of AI, Finance, and Business Operations, I led the technical development of scalable software solutions designed to modernize legacy infrastructures. My primary focus was translating complex business requirements into AI-driven automation and client-facing applications that significantly enhanced operational efficiency for over 20 global businesses.
-        </p>
-        <ul class="responsibilities">
-          <li>Designed and deployed AI-driven automation solutions that reduced manual operational tasks by 60%, directly improving business efficiency and scalability</li>
-          <li>Led the end-to-end lifecycle of a client-facing application supporting 20+ active businesses, from requirements gathering through development and launch</li>
-          <li>Partnered with stakeholders and 7 engineers to translate business requirements into scalable technical solutions</li>
-          <li>Supported system modernization initiatives aligned with cloud-based architectures and client operational goals</li>
-        </ul>
-        <div class="notable-achievement">
-          <span class="notable-label">Notable Achievement:</span>
-          Product Launch
-        </div>
-        <div class="tech-stack">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Machine Learning</span>
-          <span class="tech-tag">SQL</span>
-          <span class="tech-tag">AWS</span>
-        </div>
-      </div>
+    <section aria-label="Professional experience">
 
-      <div class="job-card">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Technology Consultant Intern</div>
-            <span class="company-name">CGI</span>
-          </div>
-          <div class="date-location">
-            <span class="date">02/2025 - 05/2025</span>
-            <span class="location">Newark, NJ</span>
+      <article class="timeline-item reveal">
+        <div class="timeline-label">
+          <div class="sticky-box">
+            <span class="timeline-date">05/2025 — 08/2025</span>
+            <h3>Infrastructure &amp; Software Associate Intern</h3>
+            <span class="org">Riverway Technologies</span>
+            <span class="loc">Holmdel, NJ</span>
           </div>
         </div>
-        <p class="job-description">
-          As a Technology Consultant at CGI, I collaborated with senior consultants to identify and solve complex operational inefficiencies through tailored technical strategies. My core focus was the development of an AI-powered scheduling engine that modernized legacy systems, significantly reducing server load while optimizing overall system performance for the client.
-        </p>
-        <ul class="responsibilities">
-          <li>Collaborated with CGI consultants to analyze campus operational challenges and design technology-enabled solutions</li>
-          <li>Developed an AI-powered scheduling solution to modernize legacy systems, reducing server load by 40% and improving efficiency by 60%</li>
-          <li>Documented functional requirements and supported solution validation with client stakeholders</li>
-        </ul>
-        <div class="notable-achievement">
-          <span class="notable-label">Notable Achievement:</span>
-          Highlight a significant accomplishment, award, or recognition received during this role.
+        <div class="timeline-body">
+          <p>
+            Riverway is an international startup working at the intersection of AI, finance, and business
+            operations. I led technical development of software that modernized legacy infrastructure for
+            clients in twenty countries.
+          </p>
+          <ul>
+            <li>Designed and deployed AI-driven automation that cut manual operational tasks by 60%</li>
+            <li>Led the end-to-end lifecycle of a client-facing application supporting 20+ active businesses, from requirements through launch</li>
+            <li>Partnered with stakeholders and 7 engineers to turn business requirements into scalable systems</li>
+            <li>Supported cloud-based system modernization aligned with client operational goals</li>
+          </ul>
+          <div class="highlight-box"><strong>Notable:</strong> Took a product from requirements to public launch.</div>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">SQL</span><span class="tag">AWS</span>
+          </div>
         </div>
-        <div class="tech-stack">
-          <span class="tech-tag">JavaScript</span>
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">Node.js</span>
-          <span class="tech-tag">MongoDB</span>
-        </div>
-      </div>
+      </article>
 
-      <div class="job-card" style="border-left-color: #7b7ce0;">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Teaching Assistant</div>
-            <span class="company-name">NJIT Learning Community</span>
-          </div>
-          <div class="date-location">
-            <span class="date">09/2025 - Present</span>
-            <span class="location">Newark, NJ</span>
+      <article class="timeline-item reveal">
+        <div class="timeline-label">
+          <div class="sticky-box">
+            <span class="timeline-date">02/2025 — 05/2025</span>
+            <h3>Technology Consultant Intern</h3>
+            <span class="org">CGI</span>
+            <span class="loc">Newark, NJ</span>
           </div>
         </div>
-        <p class="job-description">
-          As a Teaching Assistant for the NJIT Learning Community, I facilitate academic workshops and provide dedicated support to a cohort of over 50 students to enhance engagement and technical learning outcomes. My role also involves a significant leadership component, where I coordinate large-scale community initiatives by managing collaboration between multiple volunteer organizations and diverse groups of participants.
-        </p>
-        <ul class="responsibilities">
-          <li>Facilitated workshops and provided academic support to 50+ students, improving engagement and learning outcomes</li>
-          <li>Coordinated cross-organization community initiatives involving 3 volunteer groups and 50+ participants</li>
-        </ul>
-        <div class="tech-stack">
-          <span class="tech-tag">Data Analysis</span>
-          <span class="tech-tag">Excel</span>
-          <span class="tech-tag">Tableau</span>
-        </div>
-      </div>
-
-      <h2>Leadership &amp; Volunteer</h2>
-
-      <div class="job-card" style="border-left-color: #aaa;">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Resident Assistant</div>
-            <span class="company-name">Residence Life Association</span>
-          </div>
-          <div class="date-location">
-            <span class="date">Aug. 2025 - Present</span>
-            <span class="location">Newark, NJ</span>
+        <div class="timeline-body">
+          <p>
+            I worked with senior CGI consultants on NJIT internal tooling. The core deliverable was an
+            AI-powered scheduling engine that replaced a legacy system.
+          </p>
+          <ul>
+            <li>Built an AI-powered scheduling solution that reduced server load by 40% and improved efficiency by 60%</li>
+            <li>Analyzed campus operational challenges and designed technology-enabled fixes with the consulting team</li>
+            <li>Documented functional requirements and validated the solution with client stakeholders</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span>
           </div>
         </div>
-        <ul class="responsibilities">
-          <li>Led community programming and communications for 500+ residents, balancing student advocacy with operational execution and policy enforcement.</li>
-        </ul>
-      </div>
+      </article>
 
-      <div class="job-card" style="border-left-color: #aaa;">
-        <div class="job-header">
-          <div>
-            <div class="job-title">VP of Recruitment &amp; Treasurer</div>
-            <span class="company-name">TAMID Group</span>
-          </div>
-          <div class="date-location">
-            <span class="date">Oct. 2024 - May 2025</span>
-            <span class="location">Newark, NJ</span>
+      <article class="timeline-item reveal">
+        <div class="timeline-label">
+          <div class="sticky-box">
+            <span class="timeline-date">09/2025 — Present</span>
+            <h3>Teaching Assistant</h3>
+            <span class="org">NJIT Learning Community</span>
+            <span class="loc">Newark, NJ</span>
           </div>
         </div>
-        <ul class="responsibilities">
-          <li>Scaled consulting group membership by 40% through targeted recruitment strategy while optimizing financial oversight to reduce discretionary spending by 12%.</li>
-        </ul>
-      </div>
-
-      <div class="job-card" style="border-left-color: #aaa;">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Director of Programming</div>
-            <span class="company-name">Cypress Hall Council</span>
-          </div>
-          <div class="date-location">
-            <span class="date">Oct. 2024 - May 2025</span>
-            <span class="location">Newark, NJ</span>
+        <div class="timeline-body">
+          <p>
+            I facilitate academic workshops for a cohort of first-year students and coordinate community
+            initiatives across volunteer organizations.
+          </p>
+          <ul>
+            <li>Facilitated workshops and academic support for 50+ students, improving engagement and learning outcomes</li>
+            <li>Coordinated cross-organization initiatives involving 3 volunteer groups and 50+ participants</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Data Analysis</span><span class="tag">Excel</span><span class="tag">Tableau</span>
           </div>
         </div>
-        <ul class="responsibilities">
-          <li>Managed programming initiatives for a community of 300+ students, coordinating logistics and partnerships with 5 external organizations.</li>
-        </ul>
-      </div>
+      </article>
 
-      <div class="job-card" style="border-left-color: #aaa;">
-        <div class="job-header">
-          <div>
-            <div class="job-title">Project Manager</div>
-            <span class="company-name">HATCC</span>
-          </div>
-          <div class="date-location">
-            <span class="date">Jan. 2023 - Jun. 2023</span>
-            <span class="location">Marlboro, NJ</span>
+    </section>
+
+    <section aria-label="Leadership and volunteer roles">
+      <h2 class="section-heading reveal">Leadership &amp; Volunteer</h2>
+
+      <article class="timeline-item reveal">
+        <div class="timeline-label">
+          <div class="sticky-box">
+            <span class="timeline-date">08/2025 — Present</span>
+            <h3>Resident Assistant</h3>
+            <span class="org">NJIT Residence Life</span>
+            <span class="loc">Newark, NJ</span>
           </div>
         </div>
-        <ul class="responsibilities">
-          <li>Directed a team of 15 volunteers and authored comprehensive business documentation for a $15,000 community-based infrastructure project.</li>
-        </ul>
-      </div>
+        <div class="timeline-body">
+          <ul>
+            <li>Lead community programming and communications for 500+ residents, balancing student advocacy with operational execution and policy enforcement</li>
+          </ul>
+        </div>
+      </article>
 
-    </div>
-  </div>
+      <article class="timeline-item reveal">
+        <div class="timeline-label">
+          <div class="sticky-box">
+            <span class="timeline-date">10/2024 — 05/2025</span>
+            <h3>VP of Recruitment &amp; Treasurer</h3>
+            <span class="org">TAMID Group</span>
+            <span class="loc">Newark, NJ</span>
+          </div>
+        </div>
+        <div class="timeline-body">
+          <ul>
+            <li>Scaled consulting group membership by 40% through targeted recruitment strategy</li>
+            <li>Tightened financial oversight, cutting discretionary spending by 12%</li>
+          </ul>
+        </div>
+      </article>
 
-  <script>
-    var navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', function () {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
-    });
-  </script>
+      <article class="timeline-item reveal">
+        <div class="timeline-label">
+          <div class="sticky-box">
+            <span class="timeline-date">10/2024 — 05/2025</span>
+            <h3>Director of Programming</h3>
+            <span class="org">Cypress Hall Council</span>
+            <span class="loc">Newark, NJ</span>
+          </div>
+        </div>
+        <div class="timeline-body">
+          <ul>
+            <li>Managed programming for a community of 300+ students, coordinating logistics and partnerships with 5 external organizations</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="timeline-item reveal">
+        <div class="timeline-label">
+          <div class="sticky-box">
+            <span class="timeline-date">[DATES]</span>
+            <h3>Events Coordinator</h3>
+            <span class="org">GDG @ NJIT</span>
+            <span class="loc">Newark, NJ</span>
+          </div>
+        </div>
+        <div class="timeline-body">
+          <ul>
+            <li>[EVENTS ORGANIZED, ATTENDANCE — needs Rishab's input]</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="timeline-item reveal">
+        <div class="timeline-label">
+          <div class="sticky-box">
+            <span class="timeline-date">01/2023 — 06/2023</span>
+            <h3>Project Manager</h3>
+            <span class="org">HATCC</span>
+            <span class="loc">Marlboro, NJ</span>
+          </div>
+        </div>
+        <div class="timeline-body">
+          <ul>
+            <li>Directed a team of 15 volunteers and authored business documentation for a $15,000 community infrastructure project</li>
+          </ul>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      <a href="mailto:rm2289@njit.edu">Email</a>
+      <a href="https://github.com/rishabmohandoss" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/rishab-mohandoss" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+    <p>© 2026 Rishab Mohandoss</p>
+  </footer>
+
+  <script src="js/animations.js"></script>
 </body>
 </html>
