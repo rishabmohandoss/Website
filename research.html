@@ -9,12 +9,9 @@
 </head>
 <body>
 
-  <div class="progress-bar" id="progressBar"></div>
-  <canvas id="particles" aria-hidden="true"></canvas>
-
   <header class="site-header" id="siteHeader">
     <nav aria-label="Main navigation">
-      <a class="brand" href="index.html">RM</a>
+      <a class="brand" href="index.html">Rishab Mohandoss</a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -34,21 +31,21 @@
       Three active faculty collaborations. Different fields, one thread: making complex systems work for real people.
     </p>
 
-    <section aria-label="Research stats">
-      <div class="stats" data-stagger>
-        <div class="stat reveal">
+    <section class="reveal" aria-label="Research stats">
+      <div class="stats">
+        <div class="stat">
           <span class="stat-number" data-target="3">0</span>
           <span class="stat-label">Active collaborations</span>
         </div>
-        <div class="stat reveal">
+        <div class="stat">
           <span class="stat-number" data-target="12000" data-suffix="+">0</span>
           <span class="stat-label">Enrollment records analyzed</span>
         </div>
-        <div class="stat reveal">
+        <div class="stat">
           <span class="stat-number" data-target="15">0</span>
           <span class="stat-label">Years of historical data</span>
         </div>
-        <div class="stat reveal">
+        <div class="stat">
           <span class="stat-number" data-target="72" data-suffix="%">0</span>
           <span class="stat-label">Model accuracy</span>
         </div>
@@ -56,68 +53,66 @@
     </section>
 
     <section aria-label="Research projects">
-      <div data-stagger>
 
-        <article class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="card-meta">
-            <h3>ML Yield Prediction Model</h3>
-            <span class="role">with Dean Oya Tukel, Martin Tuchman School of Management</span>
-          </div>
-          <p>
-            Universities guess at enrollment yield more than they admit. We're replacing the guess with a model.
-            It forecasts which admitted students will actually enroll, trained on 12,000+ records spanning
-            15 years of historical data. Current performance: 72% accuracy, 70% precision.
-          </p>
-          <ul>
-            <li>My role: data cleaning, feature engineering, model training, evaluation</li>
-            <li>Status: in progress — [SUMMER SYMPOSIUM SHOWCASE? Confirm]</li>
-            <li>Methods: [FEATURE ENGINEERING DETAILS, MODEL SELECTION — needs Rishab's input]</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">pandas</span><span class="tag">Predictive Modeling</span>
-          </div>
-        </article>
+      <article class="card reveal" style="margin-bottom: 2rem;">
+        <div class="card-meta">
+          <h3>ML Yield Prediction Model</h3>
+          <span class="role">with Dean Oya Tukel, Martin Tuchman School of Management</span>
+        </div>
+        <p>
+          Universities guess at enrollment yield more than they admit. We're replacing the guess with a model.
+          It forecasts which admitted students will actually enroll, trained on 12,000+ records spanning
+          15 years of historical data. Current performance: 72% accuracy, 70% precision.
+        </p>
+        <ul>
+          <li>My role: data cleaning, feature engineering, model training, evaluation</li>
+          <li>Status: in progress — [SUMMER SYMPOSIUM SHOWCASE? Confirm]</li>
+          <li>Methods: [FEATURE ENGINEERING DETAILS, MODEL SELECTION — needs Rishab's input]</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">pandas</span><span class="tag">Predictive Modeling</span>
+        </div>
+      </article>
 
-        <article class="card reveal" style="margin-bottom: 1.5rem;">
-          <div class="card-meta">
-            <h3>AI Accessibility for Neurodivergent Users</h3>
-            <span class="role">with Prof. Andrew Klobucar, NJIT Humanities</span>
-          </div>
-          <p>
-            Mainstream AI interfaces assume a neurotypical user. This research asks what changes when you stop
-            assuming that. We study how students with ADHD, anxiety, and autism actually use AI tools, and we
-            prototype interfaces designed for them from the start. This work feeds directly into AdaptIQ.
-          </p>
-          <ul>
-            <li>My role: design research, user interviews, prototyping</li>
-            <li>Status: in progress</li>
-            <li>Research question: [EXACT FRAMING — needs Rishab's input]</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">HCI</span><span class="tag">Accessibility</span><span class="tag">Claude API</span><span class="tag">Prototyping</span>
-          </div>
-        </article>
+      <article class="card reveal" style="margin-bottom: 2rem;">
+        <div class="card-meta">
+          <h3>AI Accessibility for Neurodivergent Users</h3>
+          <span class="role">with Prof. Andrew Klobucar, NJIT Humanities</span>
+        </div>
+        <p>
+          Mainstream AI interfaces assume a neurotypical user. This research asks what changes when you stop
+          assuming that. We study how students with ADHD, anxiety, and autism actually use AI tools, and we
+          prototype interfaces designed for them from the start. This work feeds directly into AdaptIQ.
+        </p>
+        <ul>
+          <li>My role: design research, user interviews, prototyping</li>
+          <li>Status: in progress</li>
+          <li>Research question: [EXACT FRAMING — needs Rishab's input]</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">HCI</span><span class="tag">Accessibility</span><span class="tag">Claude API</span><span class="tag">Prototyping</span>
+        </div>
+      </article>
 
-        <article class="card reveal">
-          <div class="card-meta">
-            <h3>NFT Marketplace Research</h3>
-            <span class="role">with Prof. Jim Shi</span>
-          </div>
-          <p>
-            Decentralized marketplaces promise open access but their mechanics are poorly understood. This
-            project examines how NFT marketplaces actually behave: [CONTRACT DESIGN / UX / TOKENOMICS — which
-            aspect, needs Rishab's input].
-          </p>
-          <ul>
-            <li>My role: [SPECIFIC CONTRIBUTIONS — needs Rishab's input]</li>
-            <li>Status: in progress</li>
-          </ul>
-          <div class="tags">
-            <span class="tag">Blockchain</span><span class="tag">DeFi</span><span class="tag">Market Design</span>
-          </div>
-        </article>
+      <article class="card reveal">
+        <div class="card-meta">
+          <h3>NFT Marketplace Research</h3>
+          <span class="role">with Prof. Jim Shi</span>
+        </div>
+        <p>
+          Decentralized marketplaces promise open access but their mechanics are poorly understood. This
+          project examines how NFT marketplaces actually behave: [CONTRACT DESIGN / UX / TOKENOMICS — which
+          aspect, needs Rishab's input].
+        </p>
+        <ul>
+          <li>My role: [SPECIFIC CONTRIBUTIONS — needs Rishab's input]</li>
+          <li>Status: in progress</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Blockchain</span><span class="tag">DeFi</span><span class="tag">Market Design</span>
+        </div>
+      </article>
 
-      </div>
     </section>
 
   </main>

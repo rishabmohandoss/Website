@@ -3,18 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rishab Mohandoss — Accessible AI, FinTech, Research</title>
+  <title>Rishab Mohandoss</title>
   <meta name="description" content="Rishab Mohandoss builds accessible AI for neurodivergent communities. Financial Technology + AI at NJIT. Two-time hackathon winner.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <div class="progress-bar" id="progressBar"></div>
-  <canvas id="particles" aria-hidden="true"></canvas>
-
   <header class="site-header" id="siteHeader">
     <nav aria-label="Main navigation">
-      <a class="brand" href="index.html">RM</a>
+      <a class="brand" href="index.html">Rishab Mohandoss</a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -33,63 +30,61 @@
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <h1 class="hero-in">Building accessible AI for neurodivergent communities.</h1>
-          <p class="hero-sub hero-in">Financial Technology + AI at NJIT. Two-time hackathon winner. Accessibility researcher.</p>
-          <div class="hero-in">
-            <a href="experience.html" class="btn btn-primary">Explore my work</a>
-          </div>
+          <h1>Building accessible AI for neurodivergent communities.</h1>
+          <p class="hero-sub">Financial Technology + AI at NJIT. Two-time hackathon winner. Accessibility researcher.</p>
+          <a href="experience.html" class="btn btn-primary">Explore my work</a>
         </div>
-        <img src="assets/headshot.png" alt="Rishab Mohandoss" class="hero-photo hero-in" data-parallax="0.15">
+        <img src="assets/headshot.png" alt="Rishab Mohandoss" class="hero-photo">
       </div>
-      <div class="scroll-cue" aria-hidden="true">SCROLL FOR MORE</div>
     </section>
 
-    <section aria-label="Key stats">
-      <div class="stats" data-stagger>
-        <div class="stat reveal">
+    <section class="reveal" aria-label="Key stats">
+      <div class="stats">
+        <div class="stat">
           <span class="stat-number" data-target="3.8" data-decimals="1">0</span>
           <span class="stat-label">GPA, Dean's List</span>
         </div>
-        <div class="stat reveal">
+        <div class="stat">
           <span class="stat-number" data-target="2">0</span>
           <span class="stat-label">Hackathon wins</span>
         </div>
-        <div class="stat reveal">
+        <div class="stat">
           <span class="stat-number" data-target="3">0</span>
           <span class="stat-label">Active research collaborations</span>
         </div>
-        <div class="stat reveal">
+        <div class="stat">
           <span class="stat-number" data-target="12000" data-suffix="+">0</span>
           <span class="stat-label">Records in my yield prediction dataset</span>
         </div>
       </div>
     </section>
 
-    <section class="reveal">
+    <section class="band reveal">
       <h2 class="section-heading">Who I am</h2>
-      <p style="max-width: 680px; color: var(--text-dim);">
-        Most AI tools are built for a default user who doesn't exist. I build for the people those tools skip:
-        students with ADHD, anxiety, autism. I study Financial Technology and AI at NJIT, ship production
-        software for startups and consulting clients, and run three faculty research collaborations on the side.
-        The tools aren't where they need to be yet. That's why I keep building.
-      </p>
-      <div style="margin-top: 1.5rem;">
+      <div class="prose">
+        <p>
+          Most AI tools are built for a default user. I build for the people they skip: students with ADHD,
+          anxiety, autism. I study Financial Technology and AI at NJIT, ship production software, and run
+          faculty research on accessibility. The tools aren't there yet. That's why I keep building.
+        </p>
+      </div>
+      <div style="margin-top: 2.5rem;">
         <a href="projects.html" class="btn btn-ghost">See the projects</a>
       </div>
     </section>
 
     <section class="reveal">
       <h2 class="section-heading">Right now</h2>
-      <div class="card-grid" data-stagger>
-        <article class="card reveal">
+      <div class="card-grid">
+        <article class="card">
           <h3>AdaptIQ</h3>
           <p>An accessible AI web suite for neurodivergent users. Won the Anthropic Claude Builder Club Hackathon. The flagship project.</p>
-          <a href="projects.html" class="card-link secondary">Details</a>
+          <a href="projects.html" class="card-link secondary">View</a>
         </article>
-        <article class="card reveal">
+        <article class="card">
           <h3>Enrollment Yield Research</h3>
           <p>A machine learning model forecasting enrollment yield from 12,000+ records with Dean Oya Tukel. 72% accuracy so far.</p>
-          <a href="research.html" class="card-link secondary">Details</a>
+          <a href="research.html" class="card-link secondary">View</a>
         </article>
       </div>
     </section>

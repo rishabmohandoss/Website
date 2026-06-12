@@ -9,12 +9,9 @@
 </head>
 <body>
 
-  <div class="progress-bar" id="progressBar"></div>
-  <canvas id="particles" aria-hidden="true"></canvas>
-
   <header class="site-header" id="siteHeader">
     <nav aria-label="Main navigation">
-      <a class="brand" href="index.html">RM</a>
+      <a class="brand" href="index.html">Rishab Mohandoss</a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
         <span></span><span></span><span></span>
       </button>
@@ -34,14 +31,14 @@
       Tools I've built, mostly shipped, some still rough. The accessibility work comes first. The rest taught me something worth keeping.
     </p>
 
-    <section aria-label="Featured project">
-      <article class="card span-2 reveal" style="margin-bottom: 1.5rem;">
+    <section class="reveal" aria-label="Featured project">
+      <article class="card">
         <div>
-          <span class="badge badge-win">🏆 Anthropic Claude Builder Club Hackathon — Winner</span>
+          <span class="badge">Winner — Anthropic Claude Builder Club Hackathon</span>
           <span class="badge">Flagship</span>
         </div>
         <h3>AdaptIQ</h3>
-        <p style="color: var(--text);">
+        <p>
           AI accessibility is broken. Most tools bolt accommodations on at the end. AdaptIQ starts from the
           neurodivergent user: an AI web suite built for people with ADHD, anxiety, and autism, with profile-based
           experiences that adapt the interface to how each user actually thinks.
@@ -53,7 +50,7 @@
           <li>Connected to active accessibility research with Prof. Andrew Klobucar</li>
         </ul>
         <div class="tags">
-          <span class="tag">React</span><span class="tag">Claude API</span><span class="tag">Firebase</span><span class="tag">Vanta.js</span>
+          <span class="tag">React</span><span class="tag">Claude API</span><span class="tag">Firebase</span>
         </div>
         <div class="card-links">
           <a href="#" class="card-link primary">Live site [LINK NEEDED]</a>
@@ -62,11 +59,11 @@
       </article>
     </section>
 
-    <section aria-label="All projects">
-      <div class="card-grid" data-stagger>
+    <section class="reveal" aria-label="All projects">
+      <div class="card-grid">
 
-        <article class="card reveal">
-          <span class="badge badge-win">🏆 Fiserv / Rutgers Hack Day — Winner</span>
+        <article class="card">
+          <span class="badge">Winner — Fiserv / Rutgers Hack Day</span>
           <h3>Empathy Engine</h3>
           <p>A Chrome extension that runs real-time behavioral analysis during video calls, detecting vocal inflections to read emotional states. Built with the GDG team.</p>
           <div class="tags">
@@ -77,7 +74,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Breathe</h3>
           <p>A Chrome extension that watches for focus loss using MediaPipe computer vision, then guides you through a breathing exercise instead of letting you doomscroll.</p>
           <ul>
@@ -91,11 +88,11 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Ether</h3>
           <p>A private two-person space where you communicate through mood, music, and shifting cloud environments instead of plain text. Real-time sync over Firebase.</p>
           <div class="tags">
-            <span class="tag">React</span><span class="tag">Firebase</span><span class="tag">Vanta.js</span><span class="tag">Framer Motion</span>
+            <span class="tag">React</span><span class="tag">Firebase</span><span class="tag">Framer Motion</span>
           </div>
           <div class="card-links">
             <a href="https://github.com/rishabmohandoss/Moody" class="card-link primary" target="_blank" rel="noopener">GitHub</a>
@@ -103,7 +100,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Ometa * N — Code Efficiency Checker</h3>
           <p>A dual-scan auditing tool that evaluates AI-generated code for computational efficiency and security vulnerabilities. AI writes a lot of code now. Someone has to check it.</p>
           <div class="tags">
@@ -115,7 +112,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Stock Trading Bot</h3>
           <p>Algorithmic trading with MACD and SMA strategies, executing live through the Alpaca API. Built to test whether textbook signals survive contact with a real market.</p>
           <ul>
@@ -129,7 +126,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Resume Customization Tool</h3>
           <p>A Streamlit app that takes a job posting and generates a role-specific resume: Claude API drafts the content, LaTeX compiles it to a clean PDF.</p>
           <div class="tags">
@@ -140,7 +137,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Conversational Anki</h3>
           <p>Flashcards that talk back. Claude generates the deck from your material, then runs the study session as a conversation instead of rote flipping.</p>
           <div class="tags">
@@ -151,7 +148,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Automated AI Messaging Agents</h3>
           <p>AI agents that handle communication workflows end to end, cutting manual intervention by 60%.</p>
           <div class="tags">
@@ -162,7 +159,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Hunger Games Newsvendor Simulation</h3>
           <p>A multiplayer classroom game that teaches the newsvendor inventory problem through statistical simulation and a live leaderboard. Used in business analytics teaching.</p>
           <div class="tags">
@@ -174,7 +171,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>SpyFall Web Game</h3>
           <p>An online multiplayer adaptation of the social deduction party game SpyFall.</p>
           <div class="tags">
@@ -186,7 +183,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Tetris Pomodoro Timer</h3>
           <p>A Pomodoro timer where break time earns you Tetris. Productivity tools work better when the reward is built in.</p>
           <div class="tags">
@@ -198,7 +195,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Regression &amp; Predictive Modeling</h3>
           <p>Regression analysis on large datasets supporting data-driven decisions, reaching 98% predictive accuracy.</p>
           <div class="tags">
@@ -209,7 +206,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>FanFuel Business Plan</h3>
           <p>A 100+ page consulting-style business plan: market strategy, financial modeling, operational execution.</p>
           <div class="tags">
@@ -220,7 +217,7 @@
           </div>
         </article>
 
-        <article class="card reveal">
+        <article class="card">
           <h3>Finternet Report</h3>
           <p>A white paper, general-audience paper, and video on the Finternet concept and decentralized financial infrastructure.</p>
           <div class="tags">
