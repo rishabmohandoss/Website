@@ -164,11 +164,21 @@ section:last-child { margin-bottom: 0; }
   margin: 0 0 2.5rem;
   max-width: 480px;
 }
+.hero-photo-wrap {
+  justify-self: end;
+  margin: 0;
+  text-align: center;
+}
 .hero-photo {
   width: min(300px, 70vw);
   border-radius: 4px;
-  justify-self: end;
   filter: grayscale(20%);
+  display: block;
+}
+.hero-photo-wrap figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 /* ── Buttons ── */
@@ -504,7 +514,8 @@ footer a:hover { color: var(--text); }
     gap: 2.5rem;
     text-align: left;
   }
-  .hero-photo { order: -1; justify-self: start; width: min(180px, 50vw); }
+  .hero-photo-wrap { order: -1; justify-self: start; }
+  .hero-photo { width: min(180px, 50vw); }
 
   .stat { padding: 2rem 1.25rem; }
   .stat-number { font-size: 2rem; }
