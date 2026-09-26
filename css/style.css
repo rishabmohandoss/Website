@@ -215,21 +215,21 @@ section:last-child { margin-bottom: 0; }
   align-self: stretch;
   transition: transform 350ms var(--ease), opacity 250ms var(--ease);
   transform: translate(0, 0) rotate(-2deg);
-  z-index: 4;
+  z-index: 6;
 }
 .photo-slide[data-position="1"] {
   transform: translate(13px, -8px) rotate(4deg);
-  z-index: 3;
+  z-index: 5;
   pointer-events: none;
 }
 .photo-slide[data-position="2"] {
   transform: translate(-12px, -13px) rotate(-7deg);
-  z-index: 2;
+  z-index: 4;
   pointer-events: none;
 }
 .photo-slide[data-position="3"] {
   transform: translate(5px, -18px) rotate(1deg);
-  z-index: 1;
+  z-index: 3;
   pointer-events: none;
 }
 .photo-slide figcaption {
@@ -237,6 +237,13 @@ section:last-child { margin-bottom: 0; }
   line-height: 1.6;
   text-align: left;
 }
+.photo-slide[data-position="4"], .photo-slide[data-position="5"] {
+  transform: translate(5px, -18px) rotate(1deg);
+  z-index: 1;
+  pointer-events: none;
+}
+.photo-image-link { display: block; }
+.photo-story { display: block; margin-top: 0.5rem; }
 .photo-slide figcaption a {
   display: block;
   margin-top: 0.5rem;
@@ -268,7 +275,7 @@ section:last-child { margin-bottom: 0; }
 .photo-arrow:hover { background: var(--bg-soft); border-color: var(--text); }
 .photo-count { font-family: var(--font-mono); font-size: 0.875rem; }
 .photo-hint { margin: 0.5rem 0 0; text-align: center; font-size: 0.875rem; color: var(--text-secondary); }
-h3[id] { scroll-margin-top: 6rem; }
+h3[id], .timeline-item[id] { scroll-margin-top: 6rem; }
 @media (prefers-reduced-motion: reduce) {
   .photo-slide { transition: none; }
 }

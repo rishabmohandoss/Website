@@ -32,18 +32,35 @@
       }
     });
     var start = null;
+    var suppressPhotoClick = false;
     stack.addEventListener('pointerdown', function (event) {
-      if (!event.isPrimary || event.button !== 0 || event.target.closest('a, button')) return;
+      if (!event.isPrimary || event.button !== 0 || event.target.closest('button')) return;
+      suppressPhotoClick = false;
       start = { x: event.clientX, y: event.clientY, id: event.pointerId };
-      stack.setPointerCapture(event.pointerId);
+      if (!event.target.closest('a')) stack.setPointerCapture(event.pointerId);
+    });
+    stack.addEventListener('pointermove', function (event) {
+      if (!start || event.pointerId !== start.id) return;
+      var dx = Math.abs(event.clientX - start.x);
+      var dy = Math.abs(event.clientY - start.y);
+      if (dx > 45 && dx > dy) stack.setPointerCapture(event.pointerId);
     });
     stack.addEventListener('pointerup', function (event) {
       if (!start || event.pointerId !== start.id) return;
       var dx = event.clientX - start.x;
       var dy = event.clientY - start.y;
       start = null;
-      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) showPhoto(current + (dx < 0 ? 1 : -1));
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+        suppressPhotoClick = true;
+        showPhoto(current + (dx < 0 ? 1 : -1));
+      }
     });
+    stack.addEventListener('click', function (event) {
+      if (suppressPhotoClick) {
+        event.preventDefault();
+        suppressPhotoClick = false;
+      }
+    }, true);
     stack.addEventListener('pointercancel', function () { start = null; });
     showPhoto(0);
   }
