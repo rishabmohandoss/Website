@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects — Rishab Mohandoss</title>
-  <meta name="description" content="Projects by Rishab Mohandoss: AdaptIQ, Empathy Engine, Breathe, Ether, algorithmic trading, and more.">
+  <meta name="description" content="Projects by Rishab Mohandoss: AdaptIQ, real-time order matching, AI investment analysis, code security, and more.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -38,23 +38,48 @@
           <span class="badge">Proffeta Fellowship</span>
         </div>
         <h3>AdaptIQ</h3>
-        <p>
-          AI accessibility is broken. Most tools bolt accommodations on at the end. AdaptIQ starts from the
-          neurodivergent user: an AI web suite built for people with ADHD, anxiety, and autism, with profile-based
-          experiences that adapt the interface to how each user actually thinks.
-        </p>
+        <p>An AI accessibility platform for neurodivergent users, combining accessible classroom tools with interview practice and personalized coaching.</p>
         <ul>
-          <li>Role: AI Developer &amp; Co-Founder</li>
-          <li>Connected to active accessibility research with Prof. Andrew Klobucar</li>
-        </ul>
+            <li>Role: AI Developer &amp; Co-Founder</li>
+            <li>Built an AI accessibility platform for neurodivergent users with React, Node.js, and the Claude API, supporting 50+ classroom integrations and 2,000+ students</li>
+            <li>Built the React/Node.js interview flow and a Python eye tracking service with MediaPipe and OpenCV, achieving 85% eye contact detection accuracy during practice sessions</li>
+            <li>Developed Python speech processing to assess vocal inflection and transcribe answers with 96% accuracy, sending transcripts to the Claude API for coaching reports on confidence and weak points</li>
+            <li>Deployed the Node.js API on AWS EC2 for 60% faster site loads; stored interview data in RDS and files in S3 for 20% faster retrieval, with VPC and IAM controls restricting access between services</li>
+            <li>Connected to active accessibility research with Prof. Andrew Klobucar</li>
+          </ul>
         <div class="tags">
-          <span class="tag">React</span><span class="tag">Claude API</span><span class="tag">Firebase</span>
-        </div>
+            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Claude API</span><span class="tag">Python</span><span class="tag">MediaPipe</span><span class="tag">OpenCV</span><span class="tag">AWS EC2</span><span class="tag">RDS</span><span class="tag">S3</span><span class="tag">VPC</span><span class="tag">IAM</span>
+          </div>
       </article>
     </section>
 
     <section class="reveal" aria-label="All projects">
       <div class="card-grid">
+
+        <article class="card">
+          <h3>Real-Time Order Matching &amp; Risk Engine</h3>
+          <p class="project-date">August 2026 — Present</p>
+          <p>An in-memory trade execution and limit order book engine processing 10,000+ synthetic financial transactions with sub-millisecond execution routing.</p>
+          <ul>
+            <li>Implemented real-time risk checks, automated circuit breakers, and Redis rate limiting to enforce margin controls and prevent portfolio slippage under volatility stress testing</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">WebSockets</span><span class="tag">Redis</span><span class="tag">Docker</span><span class="tag">Locust</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>AI Investment Analysis Engine</h3>
+          <p class="project-date">September 2026 — Present</p>
+          <p>Processing 2 million+ financial documents and price target reports on an HPC supercomputer cluster to extract investor decision-making logic.</p>
+          <ul>
+            <li>Developing an NLP-driven machine learning model to replicate human financial analysis and generate predictive investment insights and price targets from market data</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">NLP</span><span class="tag">HPC</span><span class="tag">pandas</span>
+          </div>
+        </article>
+
 
         <article class="card">
           <span class="badge">Winner — Fiserv / Rutgers Hack Day</span>
@@ -89,10 +114,14 @@
         </article>
 
         <article class="card">
-          <h3>Ometa * N — Code Efficiency Checker</h3>
-          <p>A dual-scan auditing tool that evaluates AI-generated code for computational efficiency and security vulnerabilities. AI writes a lot of code now. Someone has to check it.</p>
+          <h3>Ometa*N — AI-Generated Code Vulnerability Scanner</h3>
+          <p class="project-date">February 2026 — April 2026</p>
+          <p>A static analysis engine that detects vulnerable patterns in AI-generated code across all 10 OWASP Top 10 security categories, without relying on external APIs.</p>
+          <ul>
+            <li>Reduced compliance-report preparation time by 90% with downloadable vulnerability reports containing CWE references, severity ratings, and automated remediation guidance</li>
+          </ul>
           <div class="tags">
-            <span class="tag">Python</span><span class="tag">Static Analysis</span><span class="tag">Cybersecurity</span>
+            <span class="tag">JavaScript</span><span class="tag">SAST</span><span class="tag">OWASP Top 10</span><span class="tag">CWE</span>
           </div>
           <div class="card-links">
             <a href="https://github.com/rishabmohandoss/code-efficiency-checker" class="card-link primary" target="_blank" rel="noopener">GitHub</a>
@@ -200,7 +229,7 @@
 
   <footer>
     <p>
-      <a href="mailto:rm2289@njit.edu">Email</a>
+      <a href="mailto:rishabmohandoss@gmail.com">Email</a>
       <a href="https://github.com/rishabmohandoss" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/rishab-mohandoss" target="_blank" rel="noopener">LinkedIn</a>
     </p>
