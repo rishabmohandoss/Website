@@ -169,11 +169,22 @@ section:last-child { margin-bottom: 0; }
   margin: 0;
   text-align: center;
 }
-.hero-photo {
+.hero-photo-frame {
   width: min(300px, 70vw);
-  border-radius: 4px;
-  filter: grayscale(20%);
-  display: block;
+  aspect-ratio: 4 / 5;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50% 50% 16px 16px / 40% 40% 16px 16px;
+}
+.hero-photo {
+  position: absolute;
+  width: 300%;
+  max-width: none;
+  height: 300%;
+  left: -100%;
+  top: -100%;
+  object-fit: cover;
+  object-position: 47% 43%;
 }
 .hero-photo-wrap figcaption {
   margin-top: 0.5rem;
@@ -515,7 +526,7 @@ footer a:hover { color: var(--text); }
     text-align: left;
   }
   .hero-photo-wrap { order: -1; justify-self: start; }
-  .hero-photo { width: min(180px, 50vw); }
+  .hero-photo-frame { width: min(220px, 60vw); }
 
   .stat { padding: 2rem 1.25rem; }
   .stat-number { font-size: 2rem; }
