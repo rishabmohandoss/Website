@@ -195,6 +195,84 @@ section:last-child { margin-bottom: 0; }
   color: var(--text-secondary);
 }
 
+/* ── Polaroid photo stack ── */
+.photo-carousel {
+  justify-self: end;
+  width: min(340px, 74vw);
+  min-width: 0;
+}
+.photo-stack {
+  position: relative;
+  display: grid;
+  touch-action: pan-y;
+  user-select: none;
+  cursor: grab;
+}
+.photo-stack:active { cursor: grabbing; }
+.photo-slide {
+  grid-area: 1 / 1;
+  width: 100%;
+  align-self: stretch;
+  transition: transform 350ms var(--ease), opacity 250ms var(--ease);
+  transform: translate(0, 0) rotate(-2deg);
+  z-index: 4;
+}
+.photo-slide[data-position="1"] {
+  transform: translate(13px, -8px) rotate(4deg);
+  z-index: 3;
+  pointer-events: none;
+}
+.photo-slide[data-position="2"] {
+  transform: translate(-12px, -13px) rotate(-7deg);
+  z-index: 2;
+  pointer-events: none;
+}
+.photo-slide[data-position="3"] {
+  transform: translate(5px, -18px) rotate(1deg);
+  z-index: 1;
+  pointer-events: none;
+}
+.photo-slide figcaption {
+  min-height: 9.5rem;
+  line-height: 1.6;
+  text-align: left;
+}
+.photo-slide figcaption a {
+  display: block;
+  margin-top: 0.5rem;
+  text-underline-offset: 3px;
+}
+.moment-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #ecece8;
+}
+.photo-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+.photo-arrow {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-dark);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.photo-arrow:hover { background: var(--bg-soft); border-color: var(--text); }
+.photo-count { font-family: var(--font-mono); font-size: 0.875rem; }
+.photo-hint { margin: 0.5rem 0 0; text-align: center; font-size: 0.875rem; color: var(--text-secondary); }
+h3[id] { scroll-margin-top: 6rem; }
+@media (prefers-reduced-motion: reduce) {
+  .photo-slide { transition: none; }
+}
+
 /* ── Buttons ── */
 .btn {
   display: inline-block;
@@ -529,6 +607,8 @@ footer a:hover { color: var(--text); }
     text-align: left;
   }
   .hero-photo-wrap { order: -1; justify-self: start; width: min(280px, 74vw); }
+  .photo-carousel { order: -1; justify-self: center; width: min(340px, 78vw); margin-top: 1.25rem; }
+  .photo-slide { width: 100%; }
 
   .stat { padding: 2rem 1.25rem; }
   .stat-number { font-size: 2rem; }

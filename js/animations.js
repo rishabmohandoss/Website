@@ -6,6 +6,48 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ── Polaroids: swipe, arrows, and keyboard; no automatic rotation ── */
+  var carousel = document.querySelector('.photo-carousel');
+  if (carousel) {
+    var slides = Array.prototype.slice.call(carousel.querySelectorAll('.photo-slide'));
+    var stack = carousel.querySelector('.photo-stack');
+    var count = carousel.querySelector('.photo-count');
+    var current = 0;
+    function showPhoto(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        var position = (i - current + slides.length) % slides.length;
+        slide.dataset.position = position;
+        slide.setAttribute('aria-hidden', position === 0 ? 'false' : 'true');
+        slide.inert = position !== 0;
+      });
+      count.textContent = (current + 1) + ' / ' + slides.length;
+    }
+    carousel.querySelector('[data-photo-prev]').addEventListener('click', function () { showPhoto(current - 1); });
+    carousel.querySelector('[data-photo-next]').addEventListener('click', function () { showPhoto(current + 1); });
+    carousel.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        showPhoto(current + (event.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
+    var start = null;
+    stack.addEventListener('pointerdown', function (event) {
+      if (!event.isPrimary || event.button !== 0 || event.target.closest('a, button')) return;
+      start = { x: event.clientX, y: event.clientY, id: event.pointerId };
+      stack.setPointerCapture(event.pointerId);
+    });
+    stack.addEventListener('pointerup', function (event) {
+      if (!start || event.pointerId !== start.id) return;
+      var dx = event.clientX - start.x;
+      var dy = event.clientY - start.y;
+      start = null;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) showPhoto(current + (dx < 0 ? 1 : -1));
+    });
+    stack.addEventListener('pointercancel', function () { start = null; });
+    showPhoto(0);
+  }
+
   /* ── Navbar: scrolled border + mobile toggle ── */
   var header = document.getElementById('siteHeader');
   var toggle = document.getElementById('navToggle');
