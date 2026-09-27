@@ -12,6 +12,7 @@
     var slides = Array.prototype.slice.call(carousel.querySelectorAll('.photo-slide'));
     var stack = carousel.querySelector('.photo-stack');
     var count = carousel.querySelector('.photo-count');
+    var descriptions = Array.prototype.slice.call(carousel.querySelectorAll('.photo-description'));
     var current = 0;
     function showPhoto(index) {
       current = (index + slides.length) % slides.length;
@@ -22,6 +23,7 @@
         slide.inert = position !== 0;
       });
       count.textContent = (current + 1) + ' / ' + slides.length;
+      descriptions.forEach(function (description, i) { description.hidden = i !== current; });
     }
     carousel.querySelector('[data-photo-prev]').addEventListener('click', function () { showPhoto(current - 1); });
     carousel.querySelector('[data-photo-next]').addEventListener('click', function () { showPhoto(current + 1); });
