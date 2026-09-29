@@ -59,9 +59,36 @@
       </div>
     </section>
 
-    <section class="reveal" aria-labelledby="to-read-heading">
-      <h2 class="section-heading" id="to-read-heading">Books to Read</h2>
-      <p class="reading-note">Check off the books as you go. Your selections are saved in this browser.</p>
+    <section class="reveal" aria-labelledby="reading-heading">
+      <h2 class="section-heading" id="reading-heading">Reading</h2>
+      <div class="reading-goal">
+        <div class="reading-goal-label">
+          <h3>Books read in 2026</h3>
+          <p><span id="booksReadCount">0</span> / 100</p>
+        </div>
+        <progress id="booksReadProgress" max="100" value="0" aria-label="Books read in 2026"></progress>
+      </div>
+
+      <div class="reading-accordions">
+        <details class="reading-accordion">
+          <summary><span>Reading Right Now</span><span class="reading-summary-note">Current reads</span></summary>
+          <div class="reading-accordion-content">
+            <p class="reading-empty">I’ll add my current books here soon.</p>
+          </div>
+        </details>
+
+        <details class="reading-accordion">
+          <summary><span>Books I’ve Read</span><span class="reading-summary-note">Titles &amp; ratings</span></summary>
+          <div class="reading-accordion-content">
+            <p class="reading-empty">Books and ratings coming soon.</p>
+            <ul class="read-books-list" id="booksRead"></ul>
+          </div>
+        </details>
+
+        <details class="reading-accordion">
+          <summary><span>Books to Read</span><span class="reading-summary-note">77 titles</span></summary>
+          <div class="reading-accordion-content">
+            <p class="reading-list-note">Check off the books as you go. Your selections are saved in this browser.</p>
       <ul class="reading-list" id="booksToRead">
                 <li><label><input type="checkbox" data-book="0" aria-label="Mark 3% Man as read"><span>3% Man</span></label></li>
         <li><label><input type="checkbox" data-book="1" aria-label="Mark Accelerate as read"><span>Accelerate</span></label></li>
@@ -141,11 +168,9 @@
         <li><label><input type="checkbox" data-book="75" aria-label="Mark Why Nations Fail as read"><span>Why Nations Fail</span></label></li>
         <li><label><input type="checkbox" data-book="76" aria-label="Mark Zero to One as read"><span>Zero to One</span></label></li>
       </ul>
-    </section>
-
-    <section class="reveal" aria-labelledby="read-heading">
-      <h2 class="section-heading" id="read-heading">Books I’ve Read</h2>
-      <p class="reading-note">Books and ratings coming soon.</p>
+          </div>
+        </details>
+      </div>
     </section>
   </main>
 

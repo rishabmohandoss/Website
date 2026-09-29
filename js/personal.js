@@ -2,6 +2,9 @@
   'use strict';
 
   var checkboxes = document.querySelectorAll('#booksToRead input[type="checkbox"]');
+  var readThisYear = document.querySelectorAll('#booksRead li[data-finished-year="2026"]').length;
+  document.getElementById('booksReadCount').textContent = readThisYear;
+  document.getElementById('booksReadProgress').value = Math.min(readThisYear, 100);
   var storageKey = 'rishab-personal-books-to-read-v1';
   var checked = {};
 

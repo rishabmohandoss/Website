@@ -19,6 +19,11 @@ assets/             Headshot, PDFs, demo video, project screenshots
 
 No build step. Vanilla HTML/CSS/JS, zero dependencies. Push to `main` to deploy.
 
+On the Personal page, add current reads to the first accordion. Add completed books
+as `<li data-finished-year="2026"><span>Title</span><span class="book-rating">Rating</span></li>`
+inside `#booksRead`; the 2026 progress bar counts those entries automatically.
+The to-read checkboxes are stored per browser, not shared across devices.
+
 ## Design decisions
 
 - **Monochromatic**: white background, charcoal (#1a1a1a) as the single accent,

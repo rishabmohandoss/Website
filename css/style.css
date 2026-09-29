@@ -316,10 +316,74 @@ section:last-child { margin-bottom: 0; }
   line-height: 1.35;
   color: var(--text);
 }
-.reading-note {
-  color: var(--text-secondary);
-  margin: -1.5rem 0 2rem;
+.reading-goal {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
 }
+.reading-goal-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.reading-goal h3, .reading-goal p { margin: 0; }
+.reading-goal h3 { font-size: 1rem; font-weight: 600; }
+.reading-goal p { font-family: var(--font-mono); color: var(--text-secondary); }
+.reading-goal progress {
+  display: block;
+  width: 100%;
+  height: 0.65rem;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--border);
+  accent-color: var(--accent);
+}
+.reading-goal progress::-webkit-progress-bar { background: var(--border); }
+.reading-goal progress::-webkit-progress-value { background: var(--accent); }
+.reading-goal progress::-moz-progress-bar { background: var(--accent); }
+.reading-accordion { border-top: 1px solid var(--border); }
+.reading-accordion:last-child { border-bottom: 1px solid var(--border); }
+.reading-accordion summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.reading-accordion summary::-webkit-details-marker { display: none; }
+.reading-accordion summary::after {
+  content: '+';
+  order: 3;
+  margin-left: auto;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.reading-accordion[open] summary::after { content: '−'; }
+.reading-summary-note {
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+.reading-accordion-content { padding: 0 0 2rem; }
+.reading-empty, .reading-list-note { color: var(--text-secondary); margin: 0 0 1.5rem; }
+.reading-empty { margin-bottom: 0; }
+.read-books-list { list-style: none; margin: 0; padding: 0; }
+.read-books-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  padding: 0.9rem 0;
+}
+.read-books-list .book-rating { color: var(--text-secondary); white-space: nowrap; }
 .reading-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -712,4 +776,6 @@ footer a:hover { color: var(--text); }
 
 @media (max-width: 560px) {
   .personal-photo-grid { grid-template-columns: 1fr; gap: 2.5rem; max-width: 340px; margin: 0 auto; }
+  .reading-goal { padding: 1.25rem; }
+  .reading-summary-note { display: none; }
 }
