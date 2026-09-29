@@ -10,6 +10,7 @@ experience.html     Sticky-timeline of roles and leadership
 research.html       Faculty collaborations and independent research
 projects.html       Project grid, AdaptIQ featured
 about.html          Bio, education, skills, awards, contact
+personal.html       Photo collection and reading lists
 education.html      Redirect to about.html (kept for old links)
 css/style.css       Monochromatic light theme
 js/animations.js    Scroll reveals + animated counters
